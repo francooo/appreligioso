@@ -1,0 +1,24 @@
+{
+  "name": "lumina-backend",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "vercel dev",
+    "typecheck": "tsc",
+    "db:check": "tsx scripts/check-db.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@neondatabase/serverless": "^1.2.0",
+    "dotenv": "^18.0.8"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "private": true
+}
