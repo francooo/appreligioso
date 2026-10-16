@@ -7,7 +7,8 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.francooo.lumina"
     },
     "android": {
       "adaptiveIcon": {
@@ -16,14 +17,24 @@
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.francooo.lumina"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "output": "single",
+      "bundler": "metro"
     },
     "plugins": [
       "expo-font",
       "expo-splash-screen"
-    ]
+    ],
+    "scheme": "lumina",
+    "extra": {
+      "eas": {
+        "projectId": "f6e7e5d0-ab57-4755-82fa-133447b0dcbb"
+      }
+    },
+    "owner": "francooo"
   }
 }
