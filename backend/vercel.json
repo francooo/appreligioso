@@ -1,5 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm ci && npm ci --prefix ../app",
+  "buildCommand": "cd ../app && npx expo export --platform web --output-dir ../backend/public",
+  "outputDirectory": "public",
+  "rewrites": [{ "source": "/((?!api/).*)", "destination": "/index.html" }],
   "headers": [
     {
       "source": "/api/(.*)",
