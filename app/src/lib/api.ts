@@ -5,7 +5,51 @@ export type User = {
   email: string;
   name: string | null;
   avatar_url: string | null;
+  tradition: string | null;
 };
+
+export type Intention = {
+  id: string;
+  text: string;
+  tag: string | null;
+  status: 'active' | 'answered';
+  created_at: string;
+  answered_at: string | null;
+};
+
+export type JournalEntry = {
+  id: string;
+  entry_date: string;
+  items: string[];
+  mood: string | null;
+  created_at: string;
+};
+
+export type Reminder = { id: string; time: string; label: string; days: string; enabled: boolean };
+
+export type Preferences = {
+  notify_prayer: boolean;
+  notify_word: boolean;
+  notify_news: boolean;
+  sound: string;
+  vibration: boolean;
+  dnd: boolean;
+  dnd_start: string;
+  dnd_end: string;
+  city: string | null;
+};
+
+export type SavedType = 'passagem' | 'oracao' | 'reflexao' | 'plano';
+export type SavedItem = {
+  id: string;
+  type: SavedType;
+  key: string;
+  title: string;
+  subtitle: string | null;
+  created_at: string;
+};
+
+export type Progress = { plan_key: string; plan_title: string; step: number; total: number; updated_at: string };
 
 export class ApiError extends Error {
   constructor(message: string, public status: number) {
@@ -13,10 +57,15 @@ export class ApiError extends Error {
   }
 }
 
-async function request<T>(path: string, init?: RequestInit): Promise<T> {
+export async function request<T>(path: string, init?: RequestInit & { token?: string | null }): Promise<T> {
+  const { token, ...rest } = init ?? {};
   const res = await fetch(`${API_URL}${path}`, {
-    ...init,
-    headers: { 'Content-Type': 'application/json', ...init?.headers },
+    ...rest,
+    headers: {
+      'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...rest.headers,
+    },
   });
   const body = await res.json().catch(() => ({}));
   if (!res.ok || body.ok === false) {
@@ -33,9 +82,7 @@ export function loginWithGoogle(idToken: string) {
 }
 
 export function fetchMe(token: string) {
-  return request<{ user: User }>('/api/auth/me', {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+  return request<{ user: User }>('/api/auth/me', { token });
 }
 
 export async function checkApiDatabase() {

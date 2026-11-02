@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Pressable, StyleProp, StyleSheet, Switch, Text, TextStyle, View, ViewStyle } from 'react-native';
+import { Pressable, StyleProp, StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native';
 import { colors, fonts, radii, shadows, type } from '../theme';
 
 // Primitivos visuais do design system Lumina, usados em várias telas.
@@ -79,15 +79,19 @@ export function FilterPills<T extends string>({
   );
 }
 
-export function Toggle({ value, onChange }: { value: boolean; onChange: (v: boolean) => void }) {
+export function Toggle({ value, onChange, label }: { value: boolean; onChange: (v: boolean) => void; label?: string }) {
   return (
-    <Switch
-      value={value}
-      onValueChange={onChange}
-      trackColor={{ false: '#E6DCCD', true: colors.navy }}
-      thumbColor={colors.white}
-      {...({ activeThumbColor: colors.white } as object)}
-    />
+    <Pressable
+      onPress={() => onChange(!value)}
+      accessibilityRole="switch"
+      accessibilityState={{ checked: value }}
+      aria-checked={value}
+      accessibilityLabel={label}
+      hitSlop={6}
+      style={[styles.toggleTrack, value && styles.toggleTrackOn]}
+    >
+      <View style={[styles.toggleThumb, value && styles.toggleThumbOn]} />
+    </Pressable>
   );
 }
 
@@ -148,6 +152,17 @@ const styles = StyleSheet.create({
   chipTextActive: { color: colors.white },
   tagText: { fontSize: 12, color: colors.tagText },
   pills: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
+  toggleTrack: {
+    width: 38,
+    height: 22,
+    borderRadius: 11,
+    padding: 2,
+    backgroundColor: '#E6DCCD',
+    justifyContent: 'center',
+  },
+  toggleTrackOn: { backgroundColor: colors.navy },
+  toggleThumb: { width: 18, height: 18, borderRadius: 9, backgroundColor: colors.white, boxShadow: '0px 1px 2px rgba(0,0,0,0.2)' },
+  toggleThumbOn: { transform: [{ translateX: 16 }] },
   track: { height: 4, borderRadius: 2, backgroundColor: colors.divider, overflow: 'hidden' },
   fill: { height: '100%', borderRadius: 2, backgroundColor: colors.gold },
   avatar: { backgroundColor: '#F3DCC0', alignItems: 'center', justifyContent: 'center' },

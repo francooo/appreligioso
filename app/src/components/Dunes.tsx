@@ -28,7 +28,8 @@ export function Dunes({ height = '44%', style }: Props) {
   return (
     <View
       pointerEvents="none"
-      style={[styles.wrap, { height }, style]}
+      // Altura em % vira "top": funciona mesmo quando o pai não tem altura definida.
+      style={[styles.wrap, typeof height === 'string' ? { top: `${100 - parseFloat(height)}%` } : { height }, style]}
       onLayout={(e) => setBox({ w: e.nativeEvent.layout.width, h: e.nativeEvent.layout.height })}
     >
       {w > 0 && (

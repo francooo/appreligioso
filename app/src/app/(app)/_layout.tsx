@@ -1,6 +1,7 @@
 import { Platform } from 'react-native';
 import { Redirect, Slot } from 'expo-router';
 import { AppShell } from '../../components/AppShell';
+import { ToastProvider } from '../../components/Toast';
 import { useAuth } from '../../context/AuthContext';
 import { HomeScreen } from '../../screens/HomeScreen';
 
@@ -13,8 +14,10 @@ export default function AppLayout() {
   if (Platform.OS !== 'web') return <HomeScreen />;
 
   return (
-    <AppShell>
-      <Slot />
-    </AppShell>
+    <ToastProvider>
+      <AppShell>
+        <Slot />
+      </AppShell>
+    </ToastProvider>
   );
 }

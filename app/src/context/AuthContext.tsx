@@ -5,23 +5,31 @@ import { sessionStorage } from '../lib/session';
 
 type AuthState = {
   user: User | null;
+  /** Token da sessão, enviado nas chamadas à API. */
+  token: string | null;
   /** true enquanto restaura a sessão salva ao abrir o app. */
   restoring: boolean;
   signInWithGoogleIdToken: (idToken: string, remember?: boolean) => Promise<void>;
+  /** Atualiza o usuário em memória depois de uma edição de perfil. */
+  setUser: (user: User) => void;
   signOut: () => Promise<void>;
 };
 
 const AuthContext = createContext<AuthState | null>(null);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUserState] = useState<User | null>(null);
+  const [token, setToken] = useState<string | null>(null);
   const [restoring, setRestoring] = useState(true);
 
   useEffect(() => {
     (async () => {
       try {
-        const token = await sessionStorage.get();
-        if (token) setUser((await fetchMe(token)).user);
+        const saved = await sessionStorage.get();
+        if (saved) {
+          setUserState((await fetchMe(saved)).user);
+          setToken(saved);
+        }
       } catch (err) {
         if (err instanceof ApiError && err.status === 401) await sessionStorage.clear();
         else console.warn('Não foi possível restaurar a sessão:', err);
@@ -34,18 +42,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signInWithGoogleIdToken = useCallback(async (idToken: string, remember = true) => {
     const { token, user } = await loginWithGoogle(idToken);
     await sessionStorage.set(token, remember);
-    setUser(user);
+    setToken(token);
+    setUserState(user);
   }, []);
+
+  const setUser = useCallback((u: User) => setUserState(u), []);
 
   const signOut = useCallback(async () => {
     await sessionStorage.clear();
     await googleSignOut();
-    setUser(null);
+    setToken(null);
+    setUserState(null);
   }, []);
 
   const value = useMemo(
-    () => ({ user, restoring, signInWithGoogleIdToken, signOut }),
-    [user, restoring, signInWithGoogleIdToken, signOut]
+    () => ({ user, token, restoring, signInWithGoogleIdToken, setUser, signOut }),
+    [user, token, restoring, signInWithGoogleIdToken, setUser, signOut]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -16,9 +16,17 @@ export type User = {
   email: string;
   name: string | null;
   avatar_url: string | null;
+  tradition: string | null;
 };
 
 export class AuthError extends Error {}
+
+/** Erro de validação de entrada (400). */
+export class InputError extends Error {
+  constructor(message: string, public status = 400) {
+    super(message);
+  }
+}
 
 /** Valida o ID token emitido pelo Google (web ou Android) para o nosso cliente Web. */
 export async function verifyGoogleIdToken(idToken: string) {
@@ -52,7 +60,7 @@ export async function upsertGoogleUser(g: Awaited<ReturnType<typeof verifyGoogle
       avatar_url    = COALESCE(EXCLUDED.avatar_url, users.avatar_url),
       last_login_at = now(),
       updated_at    = now()
-    RETURNING id, email, name, avatar_url
+    RETURNING id, email, name, avatar_url, tradition
   `) as User[];
   return user;
 }
@@ -85,7 +93,7 @@ export async function getSessionUser(request: Request) {
   }
 
   const [user] = (await sql`
-    SELECT id, email, name, avatar_url FROM users WHERE id = ${userId}
+    SELECT id, email, name, avatar_url, tradition FROM users WHERE id = ${userId}
   `) as User[];
   if (!user) throw new AuthError("Usuário não encontrado.");
   return user;
@@ -94,6 +102,9 @@ export async function getSessionUser(request: Request) {
 export function errorResponse(err: unknown) {
   if (err instanceof AuthError) {
     return Response.json({ ok: false, error: err.message }, { status: 401 });
+  }
+  if (err instanceof InputError) {
+    return Response.json({ ok: false, error: err.message }, { status: err.status });
   }
   console.error(err);
   return Response.json({ ok: false, error: "Erro interno." }, { status: 500 });
