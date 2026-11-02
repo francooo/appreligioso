@@ -129,7 +129,7 @@ const preferences: Methods = {
         sound         = COALESCE(${v.sound}, sound),
         dnd_start     = COALESCE(${v.dnd_start}, dnd_start),
         dnd_end       = COALESCE(${v.dnd_end}, dnd_end),
-        city          = COALESCE(${v.city}, city),
+        city          = CASE WHEN ${b.city !== undefined} THEN ${v.city} ELSE city END,
         updated_at    = now()
       WHERE user_id = ${user.id}
       RETURNING *`;

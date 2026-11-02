@@ -171,6 +171,36 @@ export function useReminders() {
   });
 }
 
+export function useReminderMutations() {
+  const api = useApi();
+  const qc = useQueryClient();
+  const done = () => qc.invalidateQueries({ queryKey: ['reminders'] });
+  return {
+    create: useMutation({
+      mutationFn: (v: { time: string; label: string; days?: string; enabled?: boolean }) =>
+        api<{ reminder: Reminder }>('/api/reminders', json('POST', v)),
+      onSuccess: done,
+    }),
+    update: useMutation({
+      mutationFn: ({ id, ...patch }: { id: string } & Partial<Omit<Reminder, 'id'>>) =>
+        api<{ reminder: Reminder }>(`/api/reminders/${id}`, json('PATCH', patch)),
+      onMutate: async ({ id, ...patch }) => {
+        // Toggle otimista na lista.
+        await qc.cancelQueries({ queryKey: ['reminders'] });
+        const prev = qc.getQueryData<{ reminders: Reminder[] }>(['reminders']);
+        if (prev) qc.setQueryData(['reminders'], { reminders: prev.reminders.map((r) => (r.id === id ? { ...r, ...patch } : r)) });
+        return { prev };
+      },
+      onError: (_e, _v, ctx) => ctx?.prev && qc.setQueryData(['reminders'], ctx.prev),
+      onSettled: done,
+    }),
+    remove: useMutation({
+      mutationFn: (id: string) => api(`/api/reminders/${id}`, { method: 'DELETE' }),
+      onSuccess: done,
+    }),
+  };
+}
+
 export function usePreferences() {
   const api = useApi();
   return useQuery({
