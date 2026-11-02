@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vercel dev",
     "typecheck": "tsc",
-    "db:check": "tsx scripts/check-db.ts"
+    "db:check": "tsx scripts/check-db.ts",
+    "db:migrate": "tsx scripts/migrate.ts"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +14,8 @@
   "type": "module",
   "dependencies": {
     "@neondatabase/serverless": "^1.2.0",
-    "dotenv": "^18.0.8"
+    "dotenv": "^18.0.8",
+    "jose": "^6.2.15"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",

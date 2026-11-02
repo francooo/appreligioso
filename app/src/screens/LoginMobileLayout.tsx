@@ -10,6 +10,8 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { Dunes } from '../components/Dunes';
+import { GoogleSignInButton } from '../components/GoogleSignInButton';
+import { OrDivider } from '../components/OrDivider';
 import { SunLogo } from '../components/SunLogo';
 import { TextField } from '../components/TextField';
 import { useLoginForm } from '../hooks/useLoginForm';
@@ -79,6 +81,11 @@ export function LoginMobileLayout() {
             <Text style={styles.buttonText}>Entrar</Text>
           </Pressable>
 
+          <View style={styles.google}>
+            <OrDivider />
+            <GoogleSignInButton />
+          </View>
+
           <Text style={styles.signup}>
             Ainda não tem conta? <Text style={styles.linkBold}>Criar conta</Text>
           </Text>
@@ -139,6 +146,7 @@ const styles = StyleSheet.create({
     marginTop: 24,
   },
   buttonPressed: { opacity: 0.85 },
+  google: { marginTop: 20, gap: 16 },
   buttonText: { fontFamily: fonts.semibold, fontSize: 18, color: colors.white, letterSpacing: 0.3 },
   signup: {
     fontFamily: fonts.regular,

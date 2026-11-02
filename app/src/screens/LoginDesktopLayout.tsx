@@ -3,6 +3,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Button } from '../components/Button';
 import { Checkbox } from '../components/Checkbox';
 import { Dunes } from '../components/Dunes';
+import { GoogleSignInButton } from '../components/GoogleSignInButton';
 import { OrDivider } from '../components/OrDivider';
 import { SunLogo } from '../components/SunLogo';
 import { TextField } from '../components/TextField';
@@ -92,6 +93,7 @@ export function LoginDesktopLayout() {
           <View style={styles.actions}>
             <Button title="Entrar" onPress={handleLogin} />
             <OrDivider />
+            <GoogleSignInButton remember={remember} />
             <Button title="Criar uma conta gratuita" variant="outline" />
           </View>
 

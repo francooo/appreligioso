@@ -27,7 +27,15 @@
     },
     "plugins": [
       "expo-font",
-      "expo-splash-screen"
+      "expo-splash-screen",
+      [
+        "react-native-nitro-google-signin",
+        {
+          "iosUrlScheme": "com.googleusercontent.apps.471522397558-prav14pvcopf2liqm9a0vdl5r3qa3gll"
+        }
+      ],
+      "expo-secure-store",
+      "expo-status-bar"
     ],
     "scheme": "lumina",
     "extra": {

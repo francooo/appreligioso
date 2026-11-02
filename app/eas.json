@@ -6,7 +6,8 @@
   "build": {
     "base": {
       "env": {
-        "EXPO_PUBLIC_API_URL": "https://appreligioso.vercel.app"
+        "EXPO_PUBLIC_API_URL": "https://appreligioso.vercel.app",
+        "EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID": "471522397558-prav14pvcopf2liqm9a0vdl5r3qa3gll.apps.googleusercontent.com"
       }
     },
     "development": {
