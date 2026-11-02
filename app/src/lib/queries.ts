@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useAuth } from '../context/AuthContext';
-import { getTradition } from '../content/traditions';
+import { TEXTS_PREFIX, isPlanProgress } from '../content/plans';
+import { DEFAULT_TRADITION, TRADITIONS, TraditionKey, getTradition } from '../content/traditions';
 import {
   Intention,
   JournalEntry,
@@ -26,6 +27,13 @@ const json = (method: string, body: unknown): RequestInit => ({ method, body: JS
 export function useTradition() {
   const { user } = useAuth();
   return getTradition(user?.tradition);
+}
+
+/** Chave da tradição do usuário ("catolica", "islamica"...). */
+export function useTraditionKey(): TraditionKey {
+  const { user } = useAuth();
+  const key = user?.tradition as TraditionKey | undefined;
+  return key && key in TRADITIONS ? key : DEFAULT_TRADITION;
 }
 
 export function useUpdateProfile() {
@@ -128,6 +136,19 @@ export function useProgress() {
     queryFn: () => api<{ progress: Progress[] }>('/api/progress'),
     select: (d) => d.progress,
   });
+}
+
+/** Só os planos de leitura (sem o "de onde parou" dos textos sagrados), mais recente primeiro. */
+export function usePlanProgress() {
+  const q = useProgress();
+  return { ...q, data: q.data?.filter(isPlanProgress) };
+}
+
+/** Último livro/seção aberto nos textos sagrados da tradição atual. */
+export function useLastText() {
+  const q = useProgress();
+  const trad = useTraditionKey();
+  return { ...q, data: q.data?.find((p) => p.plan_key === `${TEXTS_PREFIX}${trad}`) };
 }
 
 export function useSaveProgress() {

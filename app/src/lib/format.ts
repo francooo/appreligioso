@@ -80,3 +80,13 @@ export function nextPrayer(rel: Tradition, now = new Date()) {
   const index = i === -1 ? 0 : i;
   return { index, name: rel.prayers[index], time: rel.times[index] };
 }
+
+/** "hoje, às 08:15" / "ontem, às 21:40" / "em 28 out, às 19:02" */
+export function dayAndTime(iso: string, now = new Date()) {
+  const d = new Date(iso);
+  const hhmm = `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+  const startOf = (x: Date) => new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime();
+  const diff = Math.round((startOf(now) - startOf(d)) / 86_400_000);
+  const day = diff === 0 ? 'hoje' : diff === 1 ? 'ontem' : `em ${d.getDate()} ${MONTHS[d.getMonth()].slice(0, 3)}`;
+  return `${day}, às ${hhmm}`;
+}

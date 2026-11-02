@@ -10,12 +10,13 @@ import { useToast } from '../../components/Toast';
 import { Card, Eyebrow, HighlightCard, ProgressBar } from '../../components/ui';
 import { useAuth } from '../../context/AuthContext';
 import { DEFAULT_TRADITION } from '../../content/traditions';
+import { progressLabel, progressPct } from '../../content/plans';
 import { currentPrayer, greeting, longDate, nextPrayer, toMinutes } from '../../lib/format';
 import {
   useCreateJournalEntry,
   useIntentionMutations,
   useIntentions,
-  useProgress,
+  usePlanProgress,
   useReminders,
   useSaved,
   useToggleSaved,
@@ -128,15 +129,15 @@ function WordOfDayCard({ style }: { style?: object }) {
 
 function ContinueReadingCard() {
   const rel = useTradition();
-  const progress = useProgress();
-  const current = progress.data?.[0];
-  const pct = current ? Math.round((current.step / current.total) * 100) : 0;
+  const progress = usePlanProgress();
+  const current = progress.data?.find((p) => p.step < p.total) ?? progress.data?.[0];
+  const pct = current ? progressPct(current) : 0;
 
   return (
     <Card style={styles.smallCard}>
       <Eyebrow>Continue sua leitura</Eyebrow>
       <Text style={styles.cardTitle}>{current?.plan_title ?? rel.plan}</Text>
-      <Text style={styles.meta}>{current ? `Dia ${current.step} de ${current.total}` : 'Ainda não iniciado'}</Text>
+      <Text style={styles.meta}>{current ? progressLabel(current) : 'Ainda não iniciado'}</Text>
       <ProgressBar value={pct} style={{ marginTop: 18 }} />
       <Link href={'/leituras/planos' as never} style={styles.link}>
         {current ? 'Continuar leitura →' : 'Começar leitura →'}
