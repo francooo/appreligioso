@@ -1,9 +1,10 @@
+import { ReactNode } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { colors, fonts } from '../theme';
 
 type Props = {
-  label: string;
+  label: ReactNode;
   checked: boolean;
   onChange: (checked: boolean) => void;
 };
@@ -18,25 +19,26 @@ export function Checkbox({ label, checked, onChange }: Props) {
       hitSlop={6}
     >
       <View style={[styles.box, checked && styles.boxChecked]}>
-        {checked && <Ionicons name="checkmark" size={14} color={colors.white} />}
+        {checked && <Ionicons name="checkmark" size={12} color={colors.white} />}
       </View>
-      <Text style={styles.label}>{label}</Text>
+      {typeof label === 'string' ? <Text style={styles.label}>{label}</Text> : label}
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
-  row: { flexDirection: 'row', alignItems: 'center', gap: 10 },
+  row: { flexDirection: 'row', alignItems: 'flex-start', gap: 10 },
   box: {
-    width: 18,
-    height: 18,
+    width: 16,
+    height: 16,
+    marginTop: 2,
     borderRadius: 4,
-    borderWidth: 1,
-    borderColor: colors.navy,
+    borderWidth: 1.5,
+    borderColor: colors.inputBorder,
     backgroundColor: colors.white,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  boxChecked: { backgroundColor: colors.navy },
-  label: { fontFamily: fonts.regular, fontSize: 14, color: colors.text },
+  boxChecked: { backgroundColor: colors.navy, borderColor: colors.navy },
+  label: { flex: 1, fontFamily: fonts.regular, fontSize: 14, lineHeight: 20, color: colors.text },
 });

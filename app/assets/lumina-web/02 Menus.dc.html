@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<script src="lumina-data.js"></script>
+<style>body{margin:0;background:#E7E1D7;-webkit-font-smoothing:antialiased}a{color:#1E3A5F;text-decoration:none;font-weight:500}a:hover{color:#D98A3A}</style>
+</helmet>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#FBF5EC"></rect><circle cx="50" cy="50" r="16" fill="none" stroke="#E39B45" stroke-width="3"></circle></svg></template>
+<div style="padding:80px;display:flex;flex-direction:column;gap:96px;font-family:'DM Sans',sans-serif;color:#1E3A5F">
+
+<section style="display:flex;flex-direction:column;gap:32px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:.12em;color:#6E6457">WEB · LEITURAS</div>
+<div style="display:flex;flex-wrap:wrap;gap:64px;align-items:flex-start">
+
+<div id="w6" style="display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#6E6457">W6 · Leituras — Palavra diária</div>
+<div style="width:1280px;height:800px;position:relative;background:#FBF5EC;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(60,40,20,.3);display:grid;grid-template-columns:232px 1fr">
+<dc-import name="LuminaSidebar" section="leituras" sub="palavra" hint-size="232px,800px"></dc-import>
+<div style="padding:36px 44px;display:flex;flex-direction:column;gap:24px;overflow:hidden;min-width:0">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px">
+<div><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">LEITURAS</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:38px;line-height:1.1;margin-top:8px">Palavra diária</div></div>
+<div style="display:flex;align-items:center;gap:8px"><div style="width:40px;height:40px;border-radius:50%;border:1px solid #E3DACB;background:#FFFDF9;display:flex;align-items:center;justify-content:center;font-size:20px">‹</div><div style="font-size:15px;font-weight:500;padding:0 8px">Domingo, 2 de novembro</div><div style="width:40px;height:40px;border-radius:50%;border:1px solid #E3DACB;background:#FFFDF9;display:flex;align-items:center;justify-content:center;font-size:20px;color:#B5AB9D">›</div></div>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:20px;flex:1;min-height:0">
+<div style="position:relative;overflow:hidden;border-radius:16px;background:#FFF8EE;border:1px solid #EFE4D4;padding:40px 44px;display:flex;flex-direction:column">
+<div style="position:absolute;left:0;right:0;bottom:0;height:38%"><dc-import name="LuminaDunes" hint-size="100%,100%"></dc-import></div>
+<div style="position:relative;font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">PALAVRA DO DIA</div>
+<div style="position:relative;font-family:'Source Serif 4',serif;font-weight:500;font-size:34px;line-height:1.3;margin-top:16px;text-wrap:pretty">{{ rel.verse }}</div>
+<div style="position:relative;font-size:15px;color:#5B6577;margin-top:14px">{{ rel.ref }}</div>
+<div style="position:relative;width:48px;height:2px;background:#E39B45;margin:28px 0 20px"></div>
+<div style="position:relative;font-family:'Source Serif 4',serif;font-weight:600;font-size:20px">Reflexão</div>
+<div style="position:relative;font-size:16px;line-height:1.65;color:#3C4A60;margin-top:8px;max-width:600px;text-wrap:pretty">Leia a passagem devagar, duas vezes. Perceba qual palavra chama mais a sua atenção e fique com ela por alguns instantes. Pergunte-se o que ela pede de você hoje: uma atitude, um perdão, uma pausa. Não é preciso ter todas as respostas; basta começar com um pequeno gesto.</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px;min-height:0">
+<div style="border-radius:16px;background:#1E3A5F;color:#fff;padding:26px 28px;display:flex;flex-direction:column;gap:16px">
+<div style="font-size:11px;letter-spacing:.24em;color:#F0B872;font-weight:500">OUVIR REFLEXÃO</div>
+<div style="display:flex;align-items:center;gap:16px"><div style="width:52px;height:52px;flex:none;border-radius:50%;background:#E39B45;color:#1E3A5F;display:flex;align-items:center;justify-content:center;font-size:18px;padding-left:3px;box-sizing:border-box">▶</div><div style="flex:1;display:flex;flex-direction:column;gap:8px"><div style="height:4px;border-radius:2px;background:rgba(255,255,255,.2)"><div style="width:25%;height:100%;border-radius:2px;background:#F0B872"></div></div><div style="display:flex;justify-content:space-between;font-size:12px;color:#C7D1DF"><span>0:48</span><span>3:12</span></div></div></div>
+</div>
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:26px 28px;display:flex;flex-direction:column;gap:12px;flex:1">
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">PARA LEVAR NO DIA</div>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:22px;line-height:1.3">O que você pode entregar hoje, em vez de carregar sozinha?</div>
+<div style="flex:1"></div>
+<div style="height:42px;border-radius:999px;background:#1E3A5F;color:#fff;font-size:14px;font-weight:500;display:flex;align-items:center;justify-content:center">Escrever no diário</div>
+</div>
+<div style="display:flex;gap:10px"><div style="flex:1;height:42px;border-radius:999px;background:#FFFDF9;border:1px solid #E3DACB;font-size:14px;display:flex;align-items:center;justify-content:center">Salvar</div><div style="flex:1;height:42px;border-radius:999px;background:#FFFDF9;border:1px solid #E3DACB;font-size:14px;display:flex;align-items:center;justify-content:center">Compartilhar</div></div>
+</div>
+</div>
+</div></div></div>
+
+<div id="w7" style="display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#6E6457">W7 · Leituras — Planos de leitura</div>
+<div style="width:1280px;height:800px;position:relative;background:#FBF5EC;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(60,40,20,.3);display:grid;grid-template-columns:232px 1fr">
+<dc-import name="LuminaSidebar" section="leituras" sub="planos" hint-size="232px,800px"></dc-import>
+<div style="padding:36px 44px;display:flex;flex-direction:column;gap:24px;overflow:hidden;min-width:0">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px">
+<div><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">LEITURAS</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:38px;line-height:1.1;margin-top:8px">Planos de leitura</div></div>
+<div style="width:260px;height:42px;border:1px solid #E3DACB;border-radius:999px;background:#FFFDF9;display:flex;align-items:center;padding:0 18px;font-size:14px;color:#A3A7AE">Buscar planos…</div>
+</div>
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:28px 32px;display:grid;grid-template-columns:180px 1fr auto;gap:28px;align-items:center">
+<div style="height:120px;border-radius:12px;background:repeating-linear-gradient(135deg,#F3E7D6 0 8px,#F8EFE2 8px 16px);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:#8A7F72">capa do plano</div>
+<div style="display:flex;flex-direction:column;gap:8px;min-width:0"><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">EM ANDAMENTO</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:28px">{{ rel.plan }}</div><div style="font-size:14px;color:#5B6577">{{ rel.step }}</div><div style="height:6px;border-radius:3px;background:#F1E6D6;margin-top:6px;max-width:460px"><div style="width:{{ rel.pct }};height:100%;border-radius:3px;background:#E39B45"></div></div></div>
+<div style="height:44px;padding:0 24px;border-radius:999px;background:#1E3A5F;color:#fff;font-size:15px;font-weight:500;display:flex;align-items:center">Continuar leitura</div>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:24px">Explorar planos</div><div style="display:flex;gap:8px;font-size:13px"><div style="padding:7px 14px;border-radius:999px;background:#1E3A5F;color:#fff">Todos</div><div style="padding:7px 14px;border-radius:999px;border:1px solid #E3DACB;background:#FFFDF9">Curtos</div><div style="padding:7px 14px;border-radius:999px;border:1px solid #E3DACB;background:#FFFDF9">Para iniciantes</div></div></div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px">
+<sc-for list="{{ plans }}" as="p" hint-placeholder-count="4">
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:14px;display:flex;flex-direction:column;gap:10px">
+<div style="height:120px;border-radius:10px;background:repeating-linear-gradient(135deg,#F3E7D6 0 8px,#F8EFE2 8px 16px);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:#8A7F72">capa do plano</div>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:18px;line-height:1.25;padding:0 4px">{{ p.t }}</div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:0 4px 4px"><span style="font-size:13px;color:#8A7F72">{{ p.d }}</span><a href="#" style="font-size:13px">Começar →</a></div>
+</div>
+</sc-for>
+</div>
+</div></div></div>
+
+<div id="w8" style="display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#6E6457">W8 · Leituras — Textos sagrados</div>
+<div style="width:1280px;height:800px;position:relative;background:#FBF5EC;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(60,40,20,.3);display:grid;grid-template-columns:232px 1fr">
+<dc-import name="LuminaSidebar" section="leituras" sub="textos" hint-size="232px,800px"></dc-import>
+<div style="padding:36px 44px;display:flex;flex-direction:column;gap:24px;overflow:hidden;min-width:0">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px">
+<div><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">LEITURAS · TEXTOS SAGRADOS</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:38px;line-height:1.1;margin-top:8px">{{ rel.book }}</div></div>
+<div style="width:320px;height:42px;border:1px solid #E3DACB;border-radius:999px;background:#FFFDF9;display:flex;align-items:center;padding:0 18px;font-size:14px;color:#A3A7AE">Buscar livro, capítulo ou trecho…</div>
+</div>
+<div style="position:relative;overflow:hidden;border-radius:16px;background:#FFF8EE;border:1px solid #EFE4D4;padding:28px 32px;display:flex;justify-content:space-between;align-items:center;gap:24px">
+<div style="position:absolute;left:0;right:0;bottom:0;height:70%"><dc-import name="LuminaDunes" hint-size="100%,100%"></dc-import></div>
+<div style="position:relative;display:flex;flex-direction:column;gap:8px"><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">CONTINUAR DE ONDE PAROU</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:26px">{{ rel.ref }}</div><div style="font-size:14px;color:#5B6577">Última leitura ontem, às 21:40</div></div>
+<div style="position:relative;display:flex;gap:10px"><div style="height:44px;padding:0 20px;border-radius:999px;background:#FFFDF9;border:1px solid #E3DACB;font-size:14px;display:flex;align-items:center">Ouvir</div><div style="height:44px;padding:0 24px;border-radius:999px;background:#1E3A5F;color:#fff;font-size:15px;font-weight:500;display:flex;align-items:center">Abrir leitura</div></div>
+</div>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:24px">Índice</div>
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:8px 12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px">
+<sc-for list="{{ sections }}" as="s" hint-placeholder-count="8">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:16px 12px;border-bottom:1px solid #F3EADC;font-size:16px;cursor:pointer" style-hover="background:#FBF5EC"><span>{{ s.t }}</span><span style="color:#B5AB9D;font-size:18px">›</span></div>
+</sc-for>
+</div>
+</div></div></div>
+
+</div></section>
+
+<section style="display:flex;flex-direction:column;gap:32px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:.12em;color:#6E6457">WEB · ORAR</div>
+<div style="display:flex;flex-wrap:wrap;gap:64px;align-items:flex-start">
+
+<div id="w9" style="display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#6E6457">W9 · Orar — Orações</div>
+<div style="width:1280px;height:800px;position:relative;background:#FBF5EC;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(60,40,20,.3);display:grid;grid-template-columns:232px 1fr">
+<dc-import name="LuminaSidebar" section="orar" sub="oracoes" hint-size="232px,800px"></dc-import>
+<div style="padding:36px 44px;display:flex;flex-direction:column;gap:24px;overflow:hidden;min-width:0">
+<div><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">ORAR</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:38px;line-height:1.1;margin-top:8px">Orações</div></div>
+<div style="border-radius:16px;background:#1E3A5F;color:#fff;padding:30px 34px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center">
+<div style="display:flex;flex-direction:column;gap:10px"><div style="font-size:11px;letter-spacing:.24em;color:#F0B872;font-weight:500">AGORA · MANHÃ</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:34px;line-height:1.15">{{ rel.prayers.0 }}</div><div style="font-size:15px;color:#C7D1DF;max-width:520px;line-height:1.5">{{ rel.sub }}</div></div>
+<div style="display:flex;align-items:center;gap:16px"><div style="height:44px;padding:0 20px;border-radius:999px;border:1px solid rgba(255,255,255,.35);font-size:14px;display:flex;align-items:center">Ler o texto</div><div style="width:64px;height:64px;border-radius:50%;background:#E39B45;color:#1E3A5F;display:flex;align-items:center;justify-content:center;font-size:22px;padding-left:4px;box-sizing:border-box">▶</div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px">
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:24px 26px;display:flex;flex-direction:column">
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500;margin-bottom:6px">ORAÇÕES DO DIA</div>
+<sc-for list="{{ day }}" as="d" hint-placeholder-count="3">
+<div style="display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding:16px 0;border-bottom:1px solid #F3EADC">
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:20px">{{ d.time }}</div>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;font-weight:500">{{ d.name }}</span><span style="font-size:13px;color:#8A7F72">{{ d.period }}</span></div>
+<sc-if value="{{ d.now }}" hint-placeholder-val="{{ false }}"><div style="padding:5px 12px;border-radius:999px;background:#FBEBD6;color:#B8742B;font-size:12px;font-weight:600">Agora</div></sc-if>
+<sc-if value="{{ d.later }}" hint-placeholder-val="{{ true }}"><div style="font-size:13px;color:#8A7F72">Lembrete ativo</div></sc-if>
+</div>
+</sc-for>
+</div>
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:24px 26px;display:flex;flex-direction:column">
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500;margin-bottom:6px">ACERVO</div>
+<sc-for list="{{ library }}" as="l" hint-placeholder-count="4">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #F3EADC"><span style="font-size:16px">{{ l.t }}</span><div style="display:flex;gap:16px;font-size:13px"><a href="#">Ouvir</a><a href="#">Ler</a></div></div>
+</sc-for>
+</div>
+</div>
+</div></div></div>
+
+<div id="w10" style="display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#6E6457">W10 · Orar — Intenções</div>
+<div style="width:1280px;height:800px;position:relative;background:#FBF5EC;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(60,40,20,.3);display:grid;grid-template-columns:232px 1fr">
+<dc-import name="LuminaSidebar" section="orar" sub="intencoes" hint-size="232px,800px"></dc-import>
+<div style="padding:36px 44px;display:flex;flex-direction:column;gap:24px;overflow:hidden;min-width:0">
+<div><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">ORAR</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:38px;line-height:1.1;margin-top:8px">{{ rel.intentName }}</div></div>
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:22px 24px;display:flex;flex-direction:column;gap:14px">
+<div style="min-height:56px;border:1px solid #E3DACB;border-radius:10px;padding:14px 16px;font-size:15px;color:#A3A7AE;background:#fff;box-sizing:border-box">Escreva por quem ou pelo que você quer orar…</div>
+<div style="display:flex;justify-content:space-between;align-items:center"><div style="display:flex;gap:8px;font-size:13px"><div style="padding:6px 12px;border-radius:999px;background:#FBEBD6;color:#B8742B;font-weight:500">Família</div><div style="padding:6px 12px;border-radius:999px;border:1px solid #E3DACB">Saúde</div><div style="padding:6px 12px;border-radius:999px;border:1px solid #E3DACB">Trabalho</div><div style="padding:6px 12px;border-radius:999px;border:1px solid #E3DACB">Gratidão</div></div><div style="height:42px;padding:0 22px;border-radius:999px;background:#1E3A5F;color:#fff;font-size:14px;font-weight:500;display:flex;align-items:center">Adicionar</div></div>
+</div>
+<div style="display:flex;gap:28px;border-bottom:1px solid #EADFCD;font-size:15px"><div style="padding-bottom:12px;border-bottom:2px solid #1E3A5F;font-weight:600;margin-bottom:-1px">Ativas (3)</div><div style="padding-bottom:12px;color:#8A7F72">Atendidas (1)</div></div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<sc-for list="{{ intents }}" as="it" hint-placeholder-count="3">
+<div style="border-radius:14px;background:#FFFDF9;border:1px solid #EFE4D4;padding:18px 22px;display:grid;grid-template-columns:10px 1fr auto;gap:16px;align-items:center">
+<div style="width:8px;height:8px;border-radius:50%;background:#E39B45"></div>
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font-size:17px;font-weight:500">{{ it.t }}</span><span style="font-size:13px;color:#8A7F72">{{ it.meta }} · lembrar às 21:00</span></div>
+<div style="display:flex;gap:10px;align-items:center"><div style="height:36px;padding:0 16px;border-radius:999px;background:#1E3A5F;color:#fff;font-size:13px;font-weight:500;display:flex;align-items:center">Orar agora</div><div style="height:36px;padding:0 16px;border-radius:999px;border:1px solid #E3DACB;font-size:13px;display:flex;align-items:center">Marcar como atendida</div></div>
+</div>
+</sc-for>
+</div>
+</div></div></div>
+
+<div id="w11" style="display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#6E6457">W11 · Orar — Lembretes</div>
+<div style="width:1280px;height:800px;position:relative;background:#FBF5EC;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(60,40,20,.3);display:grid;grid-template-columns:232px 1fr">
+<dc-import name="LuminaSidebar" section="orar" sub="lembretes" hint-size="232px,800px"></dc-import>
+<div style="padding:36px 44px;display:flex;flex-direction:column;gap:24px;overflow:hidden;min-width:0">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px">
+<div><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">ORAR</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:38px;line-height:1.1;margin-top:8px">Lembretes</div></div>
+<div style="height:42px;padding:0 22px;border-radius:999px;background:#1E3A5F;color:#fff;font-size:14px;font-weight:500;display:flex;align-items:center">+ Novo lembrete</div>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:20px;align-items:start">
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:8px 26px">
+<sc-for list="{{ reminders }}" as="r" hint-placeholder-count="6">
+<div style="display:grid;grid-template-columns:90px 1fr auto;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid #F3EADC">
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:24px">{{ r.time }}</div>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;font-weight:500">{{ r.label }}</span><span style="font-size:13px;color:#8A7F72">{{ r.days }}</span></div>
+<sc-if value="{{ r.on }}" hint-placeholder-val="{{ true }}"><div style="width:42px;height:24px;border-radius:12px;background:#1E3A5F;position:relative"><div style="position:absolute;right:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff"></div></div></sc-if>
+<sc-if value="{{ r.off }}" hint-placeholder-val="{{ false }}"><div style="width:42px;height:24px;border-radius:12px;background:#E3DACB;position:relative"><div style="position:absolute;left:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff"></div></div></sc-if>
+</div>
+</sc-for>
+</div>
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:24px 26px;display:flex;flex-direction:column;gap:18px">
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">PREFERÊNCIAS</div>
+<div style="display:flex;justify-content:space-between;align-items:center"><div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:500">Som do lembrete</span><span style="font-size:13px;color:#8A7F72">Sino suave</span></div><span style="color:#B5AB9D">›</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:15px;font-weight:500">Vibração</span><div style="width:42px;height:24px;border-radius:12px;background:#1E3A5F;position:relative"><div style="position:absolute;right:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff"></div></div></div>
+<div style="display:flex;justify-content:space-between;align-items:center"><div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:500">Não perturbar</span><span style="font-size:13px;color:#8A7F72">22:00 às 06:00</span></div><div style="width:42px;height:24px;border-radius:12px;background:#E3DACB;position:relative"><div style="position:absolute;left:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff"></div></div></div>
+<div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #F3EADC;padding-top:16px"><div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:500">Localização</span><span style="font-size:13px;color:#8A7F72">São Paulo, SP · usada nos horários de oração</span></div><span style="color:#B5AB9D">›</span></div>
+</div>
+</div>
+</div></div></div>
+
+</div></section>
+
+<section style="display:flex;flex-direction:column;gap:32px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:.12em;color:#6E6457">WEB · DIÁRIO</div>
+<div style="display:flex;flex-wrap:wrap;gap:64px;align-items:flex-start">
+
+<div id="w12" style="display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#6E6457">W12 · Diário — Gratidão</div>
+<div style="width:1280px;height:800px;position:relative;background:#FBF5EC;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(60,40,20,.3);display:grid;grid-template-columns:232px 1fr">
+<dc-import name="LuminaSidebar" section="diario" sub="gratidao" hint-size="232px,800px"></dc-import>
+<div style="padding:36px 44px;display:flex;flex-direction:column;gap:24px;overflow:hidden;min-width:0">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px">
+<div><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">DIÁRIO</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:38px;line-height:1.1;margin-top:8px">Gratidão</div></div>
+<div style="font-size:15px;color:#5B6577">Domingo, 2 de novembro</div>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:20px;flex:1;min-height:0">
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:32px 36px;display:flex;flex-direction:column;gap:18px">
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">PERGUNTA DE HOJE</div>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:30px;line-height:1.2">Pelo que você agradece hoje?</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="display:grid;grid-template-columns:24px 1fr;align-items:center;gap:8px"><span style="font-family:'Source Serif 4',serif;font-size:18px;color:#D98A3A">1</span><div style="height:46px;border-bottom:1px solid #E3DACB;display:flex;align-items:center;font-size:16px">Pelo almoço de domingo com a família</div></div>
+<div style="display:grid;grid-template-columns:24px 1fr;align-items:center;gap:8px"><span style="font-family:'Source Serif 4',serif;font-size:18px;color:#D98A3A">2</span><div style="height:46px;border-bottom:1px solid #E3DACB;display:flex;align-items:center;font-size:16px;color:#A3A7AE">Algo pequeno que fez diferença…</div></div>
+<div style="display:grid;grid-template-columns:24px 1fr;align-items:center;gap:8px"><span style="font-family:'Source Serif 4',serif;font-size:18px;color:#D98A3A">3</span><div style="height:46px;border-bottom:1px solid #E3DACB;display:flex;align-items:center;font-size:16px;color:#A3A7AE">Alguém que você quer lembrar…</div></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;margin-top:6px"><div style="font-size:14px;font-weight:500">Como você se sente?</div><div style="display:flex;gap:8px;font-size:14px"><div style="padding:8px 16px;border-radius:999px;background:#1E3A5F;color:#fff">Em paz</div><div style="padding:8px 16px;border-radius:999px;border:1px solid #E3DACB">Grata</div><div style="padding:8px 16px;border-radius:999px;border:1px solid #E3DACB">Cansada</div><div style="padding:8px 16px;border-radius:999px;border:1px solid #E3DACB">Esperançosa</div></div></div>
+<div style="flex:1"></div>
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;color:#8A7F72">Privado · só você vê seus registros</span><div style="height:46px;padding:0 26px;border-radius:999px;background:#1E3A5F;color:#fff;font-size:15px;font-weight:500;display:flex;align-items:center">Salvar registro</div></div>
+</div>
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:24px 26px;display:flex;flex-direction:column">
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500;margin-bottom:6px">ÚLTIMOS REGISTROS</div>
+<sc-for list="{{ entries }}" as="e" hint-placeholder-count="3">
+<div style="display:flex;flex-direction:column;gap:6px;padding:14px 0;border-bottom:1px solid #F3EADC"><div style="display:flex;justify-content:space-between;font-size:12px;color:#8A7F72"><span>{{ e.date }}</span><span>{{ e.mood }}</span></div><div style="font-size:15px;line-height:1.45">{{ e.text }}</div></div>
+</sc-for>
+<a href="#" style="font-size:14px;margin-top:14px">Ver histórico →</a>
+</div>
+</div>
+</div></div></div>
+
+<div id="w13" style="display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#6E6457">W13 · Diário — Histórico</div>
+<div style="width:1280px;height:800px;position:relative;background:#FBF5EC;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(60,40,20,.3);display:grid;grid-template-columns:232px 1fr">
+<dc-import name="LuminaSidebar" section="diario" sub="historico" hint-size="232px,800px"></dc-import>
+<div style="padding:36px 44px;display:flex;flex-direction:column;gap:24px;overflow:hidden;min-width:0">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px">
+<div><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">DIÁRIO</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:38px;line-height:1.1;margin-top:8px">Histórico</div></div>
+<div style="width:260px;height:42px;border:1px solid #E3DACB;border-radius:999px;background:#FFFDF9;display:flex;align-items:center;padding:0 18px;font-size:14px;color:#A3A7AE">Buscar nos registros…</div>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:20px;align-items:start">
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:24px 26px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:20px;color:#5B6577">‹</span><span style="font-family:'Source Serif 4',serif;font-weight:600;font-size:20px">Outubro de 2026</span><span style="font-size:20px;color:#5B6577">›</span></div>
+<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center;font-size:12px;color:#8A7F72"><span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span></div>
+<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px">
+<sc-for list="{{ cal }}" as="c" hint-placeholder-count="35">
+<sc-if value="{{ c.written }}" hint-placeholder-val="{{ false }}"><div style="aspect-ratio:1;border-radius:50%;background:#FBEBD6;color:#B8742B;font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center">{{ c.label }}</div></sc-if>
+<sc-if value="{{ c.plain }}" hint-placeholder-val="{{ true }}"><div style="aspect-ratio:1;font-size:14px;color:#5B6577;display:flex;align-items:center;justify-content:center">{{ c.label }}</div></sc-if>
+</sc-for>
+</div>
+<div style="display:flex;gap:8px;align-items:center;font-size:13px;color:#8A7F72"><div style="width:12px;height:12px;border-radius:50%;background:#FBEBD6"></div>Dias com registro</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<sc-for list="{{ entries }}" as="e" hint-placeholder-count="4">
+<div style="border-radius:14px;background:#FFFDF9;border:1px solid #EFE4D4;padding:18px 22px;display:flex;flex-direction:column;gap:8px"><div style="display:flex;justify-content:space-between;align-items:center"><span style="font-family:'Source Serif 4',serif;font-weight:600;font-size:17px">{{ e.date }}</span><span style="padding:4px 10px;border-radius:999px;background:#F6EDE0;font-size:12px;color:#5B6577">{{ e.mood }}</span></div><div style="font-size:15px;line-height:1.5;color:#3C4A60">{{ e.text }}</div></div>
+</sc-for>
+</div>
+</div>
+</div></div></div>
+
+</div></section>
+
+<section style="display:flex;flex-direction:column;gap:32px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:.12em;color:#6E6457">WEB · PERFIL</div>
+<div style="display:flex;flex-wrap:wrap;gap:64px;align-items:flex-start">
+
+<div id="w14" style="display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#6E6457">W14 · Perfil — Conta e configurações</div>
+<div style="width:1280px;height:800px;position:relative;background:#FBF5EC;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(60,40,20,.3);display:grid;grid-template-columns:232px 1fr">
+<dc-import name="LuminaSidebar" section="perfil" sub="conta" hint-size="232px,800px"></dc-import>
+<div style="padding:36px 44px;display:flex;flex-direction:column;gap:24px;overflow:hidden;min-width:0">
+<div><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">PERFIL</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:38px;line-height:1.1;margin-top:8px">Conta e configurações</div></div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:20px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:20px">
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:28px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px">
+<div style="width:80px;height:80px;border-radius:50%;background:#F3DCC0;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:600;margin-bottom:8px">MS</div>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:24px">Maria Souza</div>
+<div style="font-size:14px;color:#5B6577">maria@email.com</div>
+<div style="height:40px;padding:0 20px;border-radius:999px;border:1.5px solid #1E3A5F;font-size:14px;font-weight:500;display:flex;align-items:center;margin-top:12px">Editar perfil</div>
+</div>
+<div style="position:relative;overflow:hidden;border-radius:16px;background:#FFF8EE;border:1px solid #EFE4D4;padding:24px 26px;display:flex;flex-direction:column;gap:8px">
+<div style="position:absolute;left:0;right:0;bottom:0;height:60%"><dc-import name="LuminaDunes" hint-size="100%,100%"></dc-import></div>
+<div style="position:relative;font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">TRADIÇÃO DE FÉ</div>
+<div style="position:relative;display:flex;justify-content:space-between;align-items:center"><span style="font-family:'Source Serif 4',serif;font-weight:600;font-size:24px">{{ rel.name }}</span><div style="height:36px;padding:0 16px;border-radius:999px;background:#1E3A5F;color:#fff;font-size:13px;font-weight:500;display:flex;align-items:center">Alterar</div></div>
+<div style="position:relative;font-size:13px;color:#5B6577;line-height:1.5">Define orações, leituras e lembretes que você vê no Lumina.</div>
+</div>
+</div>
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:8px 28px 20px;display:flex;flex-direction:column">
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500;padding:18px 0 4px">CONTA</div>
+<div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #F3EADC;font-size:15px"><span>Nome e foto</span><span style="color:#B5AB9D">›</span></div>
+<div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #F3EADC;font-size:15px"><span>E-mail</span><span style="color:#8A7F72">maria@email.com  ›</span></div>
+<div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #F3EADC;font-size:15px"><span>Alterar senha</span><span style="color:#B5AB9D">›</span></div>
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500;padding:22px 0 4px">NOTIFICAÇÕES</div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid #F3EADC;font-size:15px"><span>Lembretes de oração</span><div style="width:42px;height:24px;border-radius:12px;background:#1E3A5F;position:relative"><div style="position:absolute;right:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff"></div></div></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid #F3EADC;font-size:15px"><span>Palavra do dia</span><div style="width:42px;height:24px;border-radius:12px;background:#1E3A5F;position:relative"><div style="position:absolute;right:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff"></div></div></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid #F3EADC;font-size:15px"><span>Novidades do Lumina</span><div style="width:42px;height:24px;border-radius:12px;background:#E3DACB;position:relative"><div style="position:absolute;left:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff"></div></div></div>
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500;padding:22px 0 4px">PRIVACIDADE E TERMOS</div>
+<div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #F3EADC;font-size:15px"><span>Privacidade do diário</span><span style="color:#B5AB9D">›</span></div>
+<div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #F3EADC;font-size:15px"><span>Termos de uso e Política de privacidade</span><span style="color:#B5AB9D">›</span></div>
+<div style="padding:18px 0 0;font-size:15px;font-weight:500;color:#B4533C">Sair da conta</div>
+</div>
+</div>
+</div></div></div>
+
+<div id="w15" style="display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#6E6457">W15 · Perfil — Salvos</div>
+<div style="width:1280px;height:800px;position:relative;background:#FBF5EC;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(60,40,20,.3);display:grid;grid-template-columns:232px 1fr">
+<dc-import name="LuminaSidebar" section="perfil" sub="salvos" hint-size="232px,800px"></dc-import>
+<div style="padding:36px 44px;display:flex;flex-direction:column;gap:24px;overflow:hidden;min-width:0">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px">
+<div><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">PERFIL</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:38px;line-height:1.1;margin-top:8px">Salvos</div></div>
+<div style="display:flex;gap:8px;font-size:14px"><div style="padding:8px 16px;border-radius:999px;background:#1E3A5F;color:#fff">Todos</div><div style="padding:8px 16px;border-radius:999px;border:1px solid #E3DACB;background:#FFFDF9">Passagens</div><div style="padding:8px 16px;border-radius:999px;border:1px solid #E3DACB;background:#FFFDF9">Orações</div><div style="padding:8px 16px;border-radius:999px;border:1px solid #E3DACB;background:#FFFDF9">Reflexões</div><div style="padding:8px 16px;border-radius:999px;border:1px solid #E3DACB;background:#FFFDF9">Planos</div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px">
+<sc-for list="{{ saved }}" as="s" hint-placeholder-count="6">
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:24px;display:flex;flex-direction:column;gap:10px;min-height:190px;box-sizing:border-box">
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">{{ s.type }}</div>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:20px;line-height:1.3;text-wrap:pretty">{{ s.title }}</div>
+<div style="font-size:13px;color:#5B6577">{{ s.sub }}</div>
+<div style="flex:1"></div>
+<div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #F3EADC;padding-top:12px;font-size:13px"><span style="color:#8A7F72">{{ s.date }}</span><a href="#">Abrir →</a></div>
+</div>
+</sc-for>
+</div>
+</div></div></div>
+
+</div></section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;religiao&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;catolica&quot;,&quot;evangelica&quot;,&quot;espirita&quot;,&quot;judaica&quot;,&quot;islamica&quot;,&quot;budista&quot;,&quot;livre&quot;],&quot;default&quot;:&quot;catolica&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    if (!window.LUMINA) this._i = setInterval(() => { if (window.LUMINA) { clearInterval(this._i); this.forceUpdate(); } }, 80);
+  }
+  componentWillUnmount() { clearInterval(this._i); }
+  renderVals() {
+    const key = this.props.religiao ?? 'catolica';
+    if (!window.luminaVals) return { rel: {}, day: [], library: [], plans: [], sections: [], intents: [], reminders: [], saved: [], entries: [], cal: [] };
+    return window.luminaVals(key);
+  }
+}
+</script>
+</body>
+</html>

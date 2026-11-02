@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="width:100%;height:100%;box-sizing:border-box;border-right:1px solid #EFE4D4;padding:28px 18px;display:flex;flex-direction:column;gap:4px;background:#FAF2E6;font-family:'DM Sans',sans-serif;color:#1E3A5F">
+<div style="display:flex;align-items:center;gap:10px;padding:0 10px 28px"><dc-import name="LuminaSun" style="width:34px;height:34px" hint-size="34px,34px"></dc-import><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:26px">Lumina</div></div>
+<sc-for list="{{ items }}" as="it" hint-placeholder-count="5">
+<div style="display:flex;flex-direction:column;gap:2px">
+<sc-if value="{{ it.active }}" hint-placeholder-val="{{ false }}"><div style="padding:10px 12px;border-radius:10px;background:#1E3A5F;color:#fff;font-size:15px;font-weight:500">{{ it.label }}</div></sc-if>
+<sc-if value="{{ it.inactive }}" hint-placeholder-val="{{ true }}"><div style="padding:10px 12px;border-radius:10px;font-size:15px;color:#3C4A60;cursor:pointer" style-hover="background:#F3E7D6">{{ it.label }}</div></sc-if>
+<sc-for list="{{ it.subs }}" as="s" hint-placeholder-count="0">
+<sc-if value="{{ s.active }}" hint-placeholder-val="{{ false }}"><div style="margin:0 0 0 22px;padding:7px 12px;border-left:2px solid #E39B45;font-size:14px;font-weight:600;color:#1E3A5F">{{ s.label }}</div></sc-if>
+<sc-if value="{{ s.inactive }}" hint-placeholder-val="{{ true }}"><div style="margin:0 0 0 22px;padding:7px 12px;border-left:2px solid #EADFCD;font-size:14px;color:#5B6577">{{ s.label }}</div></sc-if>
+</sc-for>
+</div>
+</sc-for>
+<div style="flex:1"></div>
+<div style="display:flex;align-items:center;gap:10px;padding:12px;border-top:1px solid #EFE4D4"><div style="width:34px;height:34px;border-radius:50%;background:#F3DCC0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600">MS</div><div style="display:flex;flex-direction:column"><div style="font-size:14px;font-weight:500">Maria Souza</div><div style="font-size:12px;color:#8A7F72">maria@email.com</div></div></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:232,&quot;height&quot;:800},&quot;section&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;inicio&quot;,&quot;leituras&quot;,&quot;orar&quot;,&quot;diario&quot;,&quot;perfil&quot;],&quot;default&quot;:&quot;inicio&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;sub&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const SECTIONS = [
+  { k: 'inicio', l: 'Início', subs: [] },
+  { k: 'leituras', l: 'Leituras', subs: [['palavra', 'Palavra diária'], ['planos', 'Planos de leitura'], ['textos', 'Textos sagrados']] },
+  { k: 'orar', l: 'Orar', subs: [['oracoes', 'Orações'], ['intencoes', 'Intenções'], ['lembretes', 'Lembretes']] },
+  { k: 'diario', l: 'Diário', subs: [['gratidao', 'Gratidão'], ['historico', 'Histórico']] },
+  { k: 'perfil', l: 'Perfil', subs: [['conta', 'Conta e configurações'], ['salvos', 'Salvos']] }
+];
+class Component extends DCLogic {
+  renderVals() {
+    const sec = this.props.section ?? 'inicio', sub = this.props.sub ?? '';
+    return {
+      items: SECTIONS.map(s => ({
+        label: s.l, active: s.k === sec, inactive: s.k !== sec,
+        subs: s.k === sec ? s.subs.map(([k, l]) => ({ label: l, active: k === sub, inactive: k !== sub })) : []
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

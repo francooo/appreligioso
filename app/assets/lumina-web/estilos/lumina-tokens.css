@@ -1,0 +1,72 @@
+/* Lumina — tokens de design (versão web) */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap');
+
+:root {
+  /* Cores */
+  --lumina-marinho: #1E3A5F;
+  --lumina-marinho-texto-claro: #C7D1DF;
+  --lumina-dourado: #E39B45;
+  --lumina-dourado-texto: #D98A3A;
+  --lumina-dourado-claro: #F0B872;
+  --lumina-creme: #FBF5EC;
+  --lumina-papel: #FFFDF9;
+  --lumina-areia: #FAF2E6;
+  --lumina-areia-hover: #F3E7D6;
+  --lumina-pessego: #FBEBD6;
+  --lumina-etiqueta-texto: #B8742B;
+  --lumina-borda: #EFE4D4;
+  --lumina-borda-campo: #E3DACB;
+  --lumina-divisor: #F3EADC;
+  --lumina-texto: #1E3A5F;
+  --lumina-texto-corpo: #3C4A60;
+  --lumina-texto-apoio: #5B6577;
+  --lumina-texto-suave: #8A7F72;
+  --lumina-placeholder: #A3A7AE;
+  --lumina-sucesso: #3E8B6A;
+  --lumina-alerta: #B4533C;
+  --lumina-duna-1: #F2DFCB;
+  --lumina-duna-2: #EDD2B9;
+  --lumina-duna-3: #E8C7AB;
+  --lumina-sol-suave: #F8D3A0;
+
+  /* Tipografia */
+  --lumina-serif: 'Source Serif 4', Georgia, serif;
+  --lumina-sans: 'DM Sans', system-ui, sans-serif;
+  --lumina-display: 600 58px/1.05 var(--lumina-serif);
+  --lumina-titulo: 600 38px/1.1 var(--lumina-serif);
+  --lumina-citacao: 500 30px/1.3 var(--lumina-serif);
+  --lumina-titulo-card: 600 22px/1.25 var(--lumina-serif);
+  --lumina-corpo: 400 16px/1.6 var(--lumina-sans);
+  --lumina-rotulo: 500 14px/1.4 var(--lumina-sans);
+  --lumina-eyebrow: 500 11px/1.4 var(--lumina-sans);
+  --lumina-eyebrow-espacamento: 0.24em;
+
+  /* Espaçamento */
+  --lumina-e1: 4px; --lumina-e2: 8px; --lumina-e3: 12px; --lumina-e4: 16px;
+  --lumina-e5: 20px; --lumina-e6: 24px; --lumina-e8: 32px; --lumina-e11: 44px;
+
+  /* Raios */
+  --lumina-raio-campo: 8px;
+  --lumina-raio-lista: 14px;
+  --lumina-raio-card: 16px;
+  --lumina-raio-pill: 999px;
+
+  /* Sombras */
+  --lumina-sombra-card: 0 20px 50px -30px rgba(80, 55, 30, .25);
+  --lumina-sombra-popover: 0 24px 48px -20px rgba(60, 40, 20, .35);
+  --lumina-foco: 0 0 0 3px #FBEBD6;
+
+  /* Componentes */
+  --lumina-altura-botao: 48px;
+  --lumina-altura-campo: 44px;
+  --lumina-largura-sidebar: 232px;
+}
+
+.lumina-eyebrow { font: var(--lumina-eyebrow); letter-spacing: var(--lumina-eyebrow-espacamento); text-transform: uppercase; color: var(--lumina-dourado-texto); }
+.lumina-btn { height: var(--lumina-altura-botao); padding: 0 24px; border-radius: var(--lumina-raio-pill); font: 600 16px var(--lumina-sans); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+.lumina-btn--primario { background: var(--lumina-marinho); color: #fff; border: 0; }
+.lumina-btn--contorno { background: transparent; color: var(--lumina-marinho); border: 1.5px solid var(--lumina-marinho); }
+.lumina-campo { height: var(--lumina-altura-campo); padding: 0 14px; border: 1px solid var(--lumina-borda-campo); border-radius: var(--lumina-raio-campo); background: #fff; font: 400 15px var(--lumina-sans); color: var(--lumina-texto); }
+.lumina-campo:focus { outline: none; border-color: var(--lumina-dourado); box-shadow: var(--lumina-foco); }
+.lumina-card { background: var(--lumina-papel); border: 1px solid var(--lumina-borda); border-radius: var(--lumina-raio-card); padding: var(--lumina-e6); }
+.lumina-card--destaque { background: var(--lumina-marinho); color: #fff; border: 0; }

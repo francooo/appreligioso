@@ -13,6 +13,6 @@ export function OrDivider({ label = 'ou' }: { label?: string }) {
 
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: 14 },
-  line: { flex: 1, height: StyleSheet.hairlineWidth, backgroundColor: colors.inputBorder },
+  line: { flex: 1, height: 1, backgroundColor: colors.divider },
   text: { fontFamily: fonts.regular, fontSize: 13, color: colors.muted },
 });

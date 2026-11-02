@@ -43,7 +43,8 @@
         }
       ],
       "expo-secure-store",
-      "expo-status-bar"
+      "expo-status-bar",
+      "expo-router"
     ],
     "scheme": "lumina",
     "extra": {

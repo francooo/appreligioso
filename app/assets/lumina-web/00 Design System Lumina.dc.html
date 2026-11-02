@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#FBF5EC;-webkit-font-smoothing:antialiased}a{color:#1E3A5F;text-decoration:none;font-weight:500}a:hover{color:#D98A3A}</style>
+</helmet>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#FBF5EC"></rect><circle cx="50" cy="50" r="16" fill="none" stroke="#E39B45" stroke-width="3"></circle></svg></template>
+<div style="max-width:1120px;margin:0 auto;padding:72px 40px 120px;font-family:'DM Sans',sans-serif;color:#1E3A5F;display:flex;flex-direction:column;gap:72px">
+
+<header style="position:relative;overflow:hidden;border-radius:20px;background:#FFF8EE;border:1px solid #EFE4D4;padding:56px 48px 120px;display:flex;flex-direction:column;gap:14px">
+<div style="position:absolute;left:0;right:0;bottom:0;height:55%"><dc-import name="LuminaDunes" hint-size="100%,100%"></dc-import></div>
+<div style="position:relative;display:flex;align-items:center;gap:16px"><dc-import name="LuminaSun" style="width:64px;height:64px" hint-size="64px,64px"></dc-import><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:44px">Lumina</div></div>
+<div style="position:relative;font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500;margin-top:12px">DESIGN SYSTEM · VERSÃO WEB · 1.0</div>
+<div style="position:relative;font-family:'Source Serif 4',serif;font-weight:600;font-size:52px;line-height:1.05;letter-spacing:-0.02em;max-width:640px">Identidade visual e componentes</div>
+<div style="position:relative;font-size:18px;line-height:1.55;color:#5B6577;max-width:560px">Referência de cores, tipografia, elementos e componentes usados nas telas web do Lumina. Tom acolhedor, luz de amanhecer, respeito a todas as crenças.</div>
+</header>
+
+<section style="display:flex;flex-direction:column;gap:24px">
+<div><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">01</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:34px;margin-top:6px">Marca</div></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:32px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><dc-import name="LuminaSun" style="width:96px;height:96px" hint-size="96px,96px"></dc-import><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:40px;line-height:1">Lumina</div><div style="width:48px;height:2px;background:#E39B45;margin-top:8px"></div><div style="font-size:13px;color:#8A7F72;margin-top:8px">Assinatura vertical · telas de autenticação</div></div>
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:32px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px"><div style="display:flex;align-items:center;gap:10px"><dc-import name="LuminaSun" style="width:34px;height:34px" hint-size="34px,34px"></dc-import><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:26px">Lumina</div></div><div style="font-size:13px;color:#8A7F72">Assinatura horizontal · barra lateral</div></div>
+<div style="border-radius:16px;background:#1E3A5F;padding:32px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px"><div style="display:flex;align-items:center;gap:10px;color:#FFFDF9"><dc-import name="LuminaSun" style="width:34px;height:34px" hint-size="34px,34px"></dc-import><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:26px">Lumina</div></div><div style="font-size:13px;color:#C7D1DF">Sobre fundo marinho</div></div>
+</div>
+<div style="font-size:15px;line-height:1.6;color:#3C4A60;max-width:760px">O sol é formado por 24 raios finos ao redor de um círculo vazado, sempre em dourado <span style="font-family:'JetBrains Mono',monospace;font-size:13px">#E39B45</span>. Área de respiro mínima: metade do diâmetro do sol. Tamanho mínimo: 24px.</div>
+</section>
+
+<section style="display:flex;flex-direction:column;gap:24px">
+<div><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">02</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:34px;margin-top:6px">Cores</div></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px">
+<sc-for list="{{ colors }}" as="c" hint-placeholder-count="12">
+<div style="border-radius:14px;background:#FFFDF9;border:1px solid #EFE4D4;overflow:hidden;display:flex;flex-direction:column">
+<div style="height:88px;background:{{ c.hex }};border-bottom:1px solid #EFE4D4"></div>
+<div style="padding:12px 14px;display:flex;flex-direction:column;gap:3px"><span style="font-size:14px;font-weight:600">{{ c.name }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#5B6577">{{ c.hex }}</span><span style="font-size:12px;color:#8A7F72">{{ c.use }}</span></div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="display:flex;flex-direction:column;gap:24px">
+<div><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">03</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:34px;margin-top:6px">Tipografia</div></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:28px;display:flex;flex-direction:column;gap:8px"><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:56px;line-height:1">Aa</div><div style="font-size:16px;font-weight:600">Source Serif 4</div><div style="font-size:14px;color:#5B6577;line-height:1.5">Títulos, logotipo, citações e números de destaque. Pesos 500 e 600.</div></div>
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:28px;display:flex;flex-direction:column;gap:8px"><div style="font-weight:500;font-size:56px;line-height:1">Aa</div><div style="font-size:16px;font-weight:600">DM Sans</div><div style="font-size:14px;color:#5B6577;line-height:1.5">Interface, textos de apoio, rótulos e botões. Pesos 400, 500 e 600.</div></div>
+</div>
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:8px 28px">
+<sc-for list="{{ type }}" as="t" hint-placeholder-count="9">
+<div style="display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:baseline;padding:18px 0;border-bottom:1px solid #F3EADC">
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:14px;font-weight:600">{{ t.name }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8A7F72">{{ t.spec }}</span></div>
+<div style="font-family:{{ t.family }};font-weight:{{ t.weight }};font-size:{{ t.size }};letter-spacing:{{ t.ls }};line-height:1.2;color:{{ t.color }}">{{ t.sample }}</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="display:flex;flex-direction:column;gap:24px">
+<div><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">04</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:34px;margin-top:6px">Espaçamento, raios e sombras</div></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:28px;display:flex;flex-direction:column;gap:12px">
+<div style="font-size:14px;font-weight:600">Escala de espaçamento (px)</div>
+<div style="display:flex;align-items:flex-end;gap:10px">
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:4px;height:4px;background:#E39B45"></div><span style="font-size:11px;color:#8A7F72">4</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:8px;height:8px;background:#E39B45"></div><span style="font-size:11px;color:#8A7F72">8</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:12px;height:12px;background:#E39B45"></div><span style="font-size:11px;color:#8A7F72">12</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:16px;height:16px;background:#E39B45"></div><span style="font-size:11px;color:#8A7F72">16</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:20px;height:20px;background:#E39B45"></div><span style="font-size:11px;color:#8A7F72">20</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:24px;height:24px;background:#E39B45"></div><span style="font-size:11px;color:#8A7F72">24</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:32px;height:32px;background:#E39B45"></div><span style="font-size:11px;color:#8A7F72">32</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:44px;height:44px;background:#E39B45"></div><span style="font-size:11px;color:#8A7F72">44</span></div>
+</div>
+<div style="font-size:13px;color:#5B6577;line-height:1.5">Margem de página 44px · espaço entre cards 20px · padding de card 24–40px.</div>
+</div>
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:28px;display:flex;flex-direction:column;gap:12px">
+<div style="font-size:14px;font-weight:600">Raios</div>
+<div style="display:flex;gap:14px;align-items:flex-end">
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:52px;height:52px;border:2px solid #1E3A5F;border-radius:8px"></div><span style="font-size:11px;color:#8A7F72">8 · campos</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:52px;height:52px;border:2px solid #1E3A5F;border-radius:14px"></div><span style="font-size:11px;color:#8A7F72">14 · listas</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:52px;height:52px;border:2px solid #1E3A5F;border-radius:16px"></div><span style="font-size:11px;color:#8A7F72">16 · cards</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:72px;height:52px;border:2px solid #1E3A5F;border-radius:999px"></div><span style="font-size:11px;color:#8A7F72">pill · botões</span></div>
+</div>
+</div>
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:28px;display:flex;flex-direction:column;gap:14px">
+<div style="font-size:14px;font-weight:600">Sombras</div>
+<div style="display:flex;gap:20px"><div style="width:110px;height:64px;border-radius:14px;background:#FFFDF9;box-shadow:0 20px 50px -30px rgba(80,55,30,.35);border:1px solid #EFE4D4"></div><div style="width:110px;height:64px;border-radius:14px;background:#FFFDF9;box-shadow:0 24px 48px -20px rgba(60,40,20,.35)"></div></div>
+<div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5B6577;line-height:1.7">card: 0 20px 50px -30px rgba(80,55,30,.25)<br>popover: 0 24px 48px -20px rgba(60,40,20,.35)</div>
+</div>
+</div>
+</section>
+
+<section style="display:flex;flex-direction:column;gap:24px">
+<div><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">05</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:34px;margin-top:6px">Componentes</div></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px">
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:28px;display:flex;flex-direction:column;gap:14px">
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">BOTÕES</div>
+<div style="height:48px;border-radius:999px;background:#1E3A5F;color:#fff;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center">Primário</div>
+<div style="height:46px;border-radius:999px;border:1.5px solid #1E3A5F;font-size:15px;font-weight:500;display:flex;align-items:center;justify-content:center">Secundário (contorno)</div>
+<div style="display:flex;gap:10px"><div style="height:38px;padding:0 18px;border-radius:999px;background:#FFFDF9;border:1px solid #E3DACB;font-size:14px;display:flex;align-items:center">Terciário</div><div style="height:38px;padding:0 18px;border-radius:999px;background:#1E3A5F;color:#fff;font-size:14px;display:flex;align-items:center;opacity:.55">Desativado</div></div>
+<div style="display:flex;gap:16px;font-size:14px"><a href="#">Link de texto →</a><span style="color:#B4533C;font-weight:500">Ação destrutiva</span></div>
+</div>
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:28px;display:flex;flex-direction:column;gap:14px">
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">CAMPOS</div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:14px;font-weight:500">E-mail</div><div style="height:44px;border:1px solid #E3DACB;border-radius:8px;padding:0 14px;display:flex;align-items:center;background:#fff;font-size:15px;color:#A3A7AE">seu@email.com</div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:14px;font-weight:500">Senha</div><div style="height:44px;border:1px solid #E39B45;border-radius:8px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;background:#fff;font-size:15px;box-shadow:0 0 0 3px #FBEBD6"><span>••••••••</span><span style="font-size:13px;color:#5B6577">Mostrar</span></div><div style="font-size:12px;color:#8A7F72">Estado em foco</div></div>
+<div style="display:flex;gap:4px"><div style="flex:1;height:3px;border-radius:2px;background:#E39B45"></div><div style="flex:1;height:3px;border-radius:2px;background:#E39B45"></div><div style="flex:1;height:3px;border-radius:2px;background:#EDE4D6"></div></div>
+</div>
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:28px;display:flex;flex-direction:column;gap:16px">
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">SELEÇÃO</div>
+<div style="display:flex;gap:18px;align-items:center;font-size:14px"><div style="display:flex;gap:8px;align-items:center"><div style="width:16px;height:16px;border-radius:4px;background:#1E3A5F;color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center">✓</div>Marcado</div><div style="display:flex;gap:8px;align-items:center"><div style="width:16px;height:16px;border-radius:4px;border:1.5px solid #B5AB9D;box-sizing:border-box"></div>Desmarcado</div></div>
+<div style="display:flex;gap:18px;align-items:center;font-size:14px"><div style="width:42px;height:24px;border-radius:12px;background:#1E3A5F;position:relative"><div style="position:absolute;right:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff"></div></div>Ligado<div style="width:42px;height:24px;border-radius:12px;background:#E3DACB;position:relative"><div style="position:absolute;left:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff"></div></div>Desligado</div>
+<div style="display:flex;gap:8px;font-size:13px;flex-wrap:wrap"><div style="padding:7px 14px;border-radius:999px;background:#1E3A5F;color:#fff">Filtro ativo</div><div style="padding:7px 14px;border-radius:999px;border:1px solid #E3DACB">Filtro</div><div style="padding:6px 12px;border-radius:999px;background:#FBEBD6;color:#B8742B;font-weight:600">Etiqueta</div></div>
+</div>
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:28px;display:flex;flex-direction:column;gap:10px">
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">CARD DE CONTEÚDO</div>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:20px">Continue sua leitura</div>
+<div style="font-size:13px;color:#5B6577">Eyebrow dourado + título serifado + apoio em DM Sans.</div>
+<div style="height:6px;border-radius:3px;background:#F1E6D6"><div style="width:38%;height:100%;border-radius:3px;background:#E39B45"></div></div>
+</div>
+<div style="border-radius:16px;background:#1E3A5F;color:#fff;padding:28px;display:flex;flex-direction:column;gap:10px">
+<div style="font-size:11px;letter-spacing:.24em;color:#F0B872;font-weight:500">CARD DE DESTAQUE</div>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:22px">Momento de oração</div>
+<div style="display:flex;align-items:center;gap:12px"><div style="width:48px;height:48px;border-radius:50%;background:#E39B45;color:#1E3A5F;display:flex;align-items:center;justify-content:center;padding-left:3px;box-sizing:border-box">▶</div><span style="font-size:13px;color:#C7D1DF">Botão de áudio</span></div>
+</div>
+<div style="border-radius:16px;background:#FAF2E6;border:1px solid #EFE4D4;padding:20px;display:flex;flex-direction:column;gap:4px">
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500;padding:0 0 10px 8px">NAVEGAÇÃO LATERAL</div>
+<div style="padding:10px 12px;border-radius:10px;background:#1E3A5F;color:#fff;font-size:15px;font-weight:500">Seção ativa</div>
+<div style="margin-left:22px;padding:7px 12px;border-left:2px solid #E39B45;font-size:14px;font-weight:600">Subpágina ativa</div>
+<div style="margin-left:22px;padding:7px 12px;border-left:2px solid #EADFCD;font-size:14px;color:#5B6577">Subpágina</div>
+<div style="padding:10px 12px;font-size:15px;color:#3C4A60">Seção</div>
+</div>
+</div>
+</section>
+
+<section style="display:flex;flex-direction:column;gap:24px">
+<div><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">06</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:34px;margin-top:6px">Elementos de identidade</div></div>
+<div style="position:relative;height:220px;border-radius:16px;overflow:hidden;background:#FBF5EC;border:1px solid #EFE4D4"><dc-import name="LuminaDunes" hint-size="100%,100%"></dc-import><div style="position:absolute;left:24px;top:20px;font-size:13px;color:#5B6577">Dunas ao amanhecer · fundo de autenticação e cards de destaque</div></div>
+<div style="font-size:15px;line-height:1.6;color:#3C4A60;max-width:760px">Três camadas de dunas em tons de areia (#F2DFCB, #EDD2B9, #E8C7AB) e um sol suave (#F8D3A0) atrás delas. Ficam sempre na parte inferior, abaixo do conteúdo, com degradê para o creme de fundo. Use no máximo uma área de dunas por tela.</div>
+</section>
+
+<section style="display:flex;flex-direction:column;gap:24px">
+<div><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">07</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:34px;margin-top:6px">Tom de voz e personalização</div></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:28px;display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:1.55;color:#3C4A60"><div style="font-size:14px;font-weight:600;color:#1E3A5F">Como falamos</div><div>Acolhedor, calmo e direto. Frases curtas, em segunda pessoa (“você”).</div><div>Evitamos urgência, culpa e números de desempenho.</div><div>Exemplos: “Que bom ter você por aqui.” · “Tudo bem. Informe seu e-mail…”</div></div>
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:28px;display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:1.55;color:#3C4A60"><div style="font-size:14px;font-weight:600;color:#1E3A5F">Tradição de fé</div><div>A tradição escolhida muda textos, nomes de orações, horários, planos e o nome de “Intenções”. A identidade visual é a mesma para todas.</div><div>Tradições: Católica, Evangélica, Espírita, Judaica, Islâmica, Budista e Espiritualidade livre. Conteúdo em <span style="font-family:'JetBrains Mono',monospace;font-size:13px">lumina-data.js</span>.</div></div>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const S = "'Source Serif 4',serif", D = "'DM Sans',sans-serif";
+    return {
+      colors: [
+        { name: 'Marinho', hex: '#1E3A5F', use: 'Texto principal, botões' },
+        { name: 'Dourado', hex: '#E39B45', use: 'Sol, destaques, progresso' },
+        { name: 'Dourado texto', hex: '#D98A3A', use: 'Eyebrows' },
+        { name: 'Creme', hex: '#FBF5EC', use: 'Fundo da página' },
+        { name: 'Papel', hex: '#FFFDF9', use: 'Cards e campos' },
+        { name: 'Areia clara', hex: '#FAF2E6', use: 'Barra lateral' },
+        { name: 'Pêssego', hex: '#FBEBD6', use: 'Etiquetas, ícones' },
+        { name: 'Borda', hex: '#EFE4D4', use: 'Borda de card' },
+        { name: 'Borda campo', hex: '#E3DACB', use: 'Campos, pills' },
+        { name: 'Texto apoio', hex: '#5B6577', use: 'Subtítulos' },
+        { name: 'Texto suave', hex: '#8A7F72', use: 'Metadados' },
+        { name: 'Alerta', hex: '#B4533C', use: 'Sair, erros' }
+      ],
+      type: [
+        { name: 'Display', spec: 'Serif 600 · 58/1.05', family: S, weight: 600, size: '58px', ls: '-0.02em', color: '#1E3A5F', sample: 'Um instante para a sua fé.' },
+        { name: 'Título de página', spec: 'Serif 600 · 38/1.1', family: S, weight: 600, size: '38px', ls: '0', color: '#1E3A5F', sample: 'Planos de leitura' },
+        { name: 'Citação', spec: 'Serif 500 · 28–34/1.3', family: S, weight: 500, size: '30px', ls: '0', color: '#1E3A5F', sample: '“O Senhor é o meu pastor.”' },
+        { name: 'Título de card', spec: 'Serif 600 · 20–26', family: S, weight: 600, size: '22px', ls: '0', color: '#1E3A5F', sample: 'Momento de oração' },
+        { name: 'Eyebrow', spec: 'Sans 500 · 11 · +0.24em', family: D, weight: 500, size: '11px', ls: '0.24em', color: '#D98A3A', sample: 'PALAVRA DO DIA' },
+        { name: 'Corpo', spec: 'Sans 400 · 16/1.6', family: D, weight: 400, size: '16px', ls: '0', color: '#3C4A60', sample: 'Palavras que acolhem e acompanham seu caminho.' },
+        { name: 'Rótulo', spec: 'Sans 500 · 14', family: D, weight: 500, size: '14px', ls: '0', color: '#1E3A5F', sample: 'E-mail' },
+        { name: 'Botão', spec: 'Sans 600 · 16', family: D, weight: 600, size: '16px', ls: '0', color: '#1E3A5F', sample: 'Criar conta' },
+        { name: 'Metadado', spec: 'Sans 400 · 12–13', family: D, weight: 400, size: '13px', ls: '0', color: '#8A7F72', sample: 'Salvo em 28 out' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

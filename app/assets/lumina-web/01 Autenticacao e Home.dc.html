@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#E7E1D7;-webkit-font-smoothing:antialiased}a{color:#1E3A5F;text-decoration:none;font-weight:500}a:hover{color:#D98A3A}input::placeholder{color:#A3A7AE}</style>
+</helmet>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#FBF5EC"></rect><circle cx="50" cy="50" r="16" fill="none" stroke="#E39B45" stroke-width="3"></circle></svg></template>
+<div style="padding:80px;display:flex;flex-direction:column;gap:96px;font-family:'DM Sans',sans-serif;color:#1E3A5F">
+
+<section style="display:flex;flex-direction:column;gap:32px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:.12em;color:#6E6457">WEB · DESKTOP 1440</div>
+<div style="display:flex;flex-wrap:wrap;gap:64px;align-items:flex-start">
+
+<div id="w1" style="display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#6E6457">W1 · Criar conta</div>
+<div style="width:1280px;height:800px;position:relative;background:#FBF5EC;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(60,40,20,.3);display:grid;grid-template-columns:1fr 520px">
+<sc-if value="{{ showDunes }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;left:0;right:0;bottom:0;height:44%"><dc-import name="LuminaDunes" hint-size="100%,100%"></dc-import></div></sc-if>
+<div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 40px 140px;text-align:center">
+<dc-import name="LuminaSun" style="width:112px;height:112px" hint-size="112px,112px"></dc-import>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:60px;line-height:1;margin-top:6px">Lumina</div>
+<div style="width:64px;height:2px;background:#E39B45;margin:24px 0 28px"></div>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:58px;line-height:1.05;letter-spacing:-0.02em;max-width:520px;text-wrap:balance">Comece sua jornada de fé.</div>
+<div style="font-size:20px;line-height:1.5;color:#5B6577;margin-top:20px;max-width:380px">Um espaço tranquilo para ler, orar e agradecer todos os dias.</div>
+</div>
+<div style="position:absolute;left:40px;bottom:36px;z-index:1;font-size:10px;letter-spacing:.24em;color:#8A7F72;line-height:1.8;display:flex;flex-direction:column;gap:8px"><div>COM RESPEITO<br>A TODAS AS CRENÇAS.</div><div style="width:70px;height:1px;background:#E39B45"></div></div>
+<div style="position:relative;z-index:1;padding:40px 48px 40px 0;display:flex">
+<div style="flex:1;background:#FFFDF9;border:1px solid #EFE4D4;border-radius:16px;box-shadow:0 20px 50px -30px rgba(80,55,30,.25);padding:28px 44px;display:flex;flex-direction:column;justify-content:center">
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">CRIE SUA CONTA</div>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:38px;line-height:1.1;margin-top:12px">Seja bem-vinda(o).</div>
+<div style="font-size:16px;color:#5B6577;margin-top:8px">Leva menos de um minuto.</div>
+<div style="display:flex;flex-direction:column;gap:16px;margin-top:28px">
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:14px;font-weight:500">Nome</div><input placeholder="Como podemos te chamar?" style="box-sizing:border-box;width:100%;height:44px;border:1px solid #E3DACB;border-radius:8px;padding:0 14px;font:15px 'DM Sans';background:#fff;color:#1E3A5F;outline:none"></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:14px;font-weight:500">E-mail</div><input placeholder="seu@email.com" style="box-sizing:border-box;width:100%;height:44px;border:1px solid #E3DACB;border-radius:8px;padding:0 14px;font:15px 'DM Sans';background:#fff;color:#1E3A5F;outline:none"></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:14px;font-weight:500">Senha</div>
+<div style="position:relative"><input type="password" value="minhasenha1" style="box-sizing:border-box;width:100%;height:44px;border:1px solid #E3DACB;border-radius:8px;padding:0 80px 0 14px;font:15px 'DM Sans';background:#fff;color:#1E3A5F;outline:none"><div style="position:absolute;right:14px;top:13px;font-size:13px;color:#5B6577;cursor:pointer">Mostrar</div></div>
+<div style="display:flex;gap:4px;margin-top:4px"><div style="flex:1;height:3px;border-radius:2px;background:#E39B45"></div><div style="flex:1;height:3px;border-radius:2px;background:#E39B45"></div><div style="flex:1;height:3px;border-radius:2px;background:#EDE4D6"></div></div>
+<div style="font-size:12px;color:#8A7F72">Senha razoável · use 8+ caracteres com números</div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:14px;font-weight:500">Tradição de fé <span style="color:#8A7F72;font-weight:400">(opcional)</span></div>
+<div style="box-sizing:border-box;height:44px;border:1px solid #E3DACB;border-radius:8px;padding:0 14px;background:#fff;display:flex;align-items:center;justify-content:space-between;font-size:15px;color:#A3A7AE"><span>Selecione, se quiser</span><span style="color:#5B6577">⌄</span></div></div>
+</div>
+<div style="display:flex;gap:10px;align-items:flex-start;margin-top:18px;font-size:13px;color:#5B6577;line-height:1.45"><div style="width:16px;height:16px;flex:none;border-radius:4px;background:#1E3A5F;color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;margin-top:1px">✓</div><div>Li e concordo com os <a href="#">Termos de uso</a> e a <a href="#">Política de privacidade</a>.</div></div>
+<div style="height:48px;border-radius:999px;background:#1E3A5F;color:#fff;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:22px;cursor:pointer">Criar conta</div>
+<div style="text-align:center;font-size:14px;color:#5B6577;margin-top:18px">Já tem uma conta? <a href="#">Entrar</a></div>
+</div></div></div></div>
+
+<div id="w2" style="display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#6E6457">W2 · Recuperar senha — informar e-mail</div>
+<div style="width:1280px;height:800px;position:relative;background:#FBF5EC;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(60,40,20,.3);display:grid;grid-template-columns:1fr 520px">
+<sc-if value="{{ showDunes }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;left:0;right:0;bottom:0;height:44%"><dc-import name="LuminaDunes" hint-size="100%,100%"></dc-import></div></sc-if>
+<div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 40px 140px;text-align:center">
+<dc-import name="LuminaSun" style="width:112px;height:112px" hint-size="112px,112px"></dc-import>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:60px;line-height:1;margin-top:6px">Lumina</div>
+<div style="width:64px;height:2px;background:#E39B45;margin:24px 0 28px"></div>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:58px;line-height:1.05;letter-spacing:-0.02em;max-width:520px;text-wrap:balance">Um instante para a sua fé.</div>
+<div style="font-size:20px;line-height:1.5;color:#5B6577;margin-top:20px;max-width:360px">Palavras que acolhem e acompanham seu caminho.</div>
+</div>
+<div style="position:absolute;left:40px;bottom:36px;z-index:1;font-size:10px;letter-spacing:.24em;color:#8A7F72;line-height:1.8;display:flex;flex-direction:column;gap:8px"><div>COM RESPEITO<br>A TODAS AS CRENÇAS.</div><div style="width:70px;height:1px;background:#E39B45"></div></div>
+<div style="position:relative;z-index:1;padding:40px 48px 40px 0;display:flex">
+<div style="flex:1;background:#FFFDF9;border:1px solid #EFE4D4;border-radius:16px;box-shadow:0 20px 50px -30px rgba(80,55,30,.25);padding:48px 44px;display:flex;flex-direction:column;justify-content:center">
+<a href="#" style="font-size:14px;color:#5B6577;margin-bottom:36px">← Voltar para o login</a>
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">RECUPERAR SENHA</div>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:38px;line-height:1.1;margin-top:12px">Esqueceu sua senha?</div>
+<div style="font-size:16px;line-height:1.5;color:#5B6577;margin-top:10px">Tudo bem. Informe o e-mail da sua conta e enviaremos um link para criar uma nova senha.</div>
+<div style="display:flex;flex-direction:column;gap:6px;margin-top:32px"><div style="font-size:14px;font-weight:500">E-mail</div><input placeholder="seu@email.com" style="box-sizing:border-box;width:100%;height:44px;border:1px solid #E3DACB;border-radius:8px;padding:0 14px;font:15px 'DM Sans';background:#fff;color:#1E3A5F;outline:none"></div>
+<div style="height:48px;border-radius:999px;background:#1E3A5F;color:#fff;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:28px;cursor:pointer">Enviar link de recuperação</div>
+<div style="text-align:center;font-size:13px;line-height:1.5;color:#5B6577;margin-top:28px">Não tem mais acesso a esse e-mail?<br><a href="#">Fale com o suporte</a></div>
+</div></div></div></div>
+
+<div id="w3" style="display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#6E6457">W3 · Recuperar senha — e-mail enviado</div>
+<div style="width:1280px;height:800px;position:relative;background:#FBF5EC;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(60,40,20,.3);display:grid;grid-template-columns:1fr 520px">
+<sc-if value="{{ showDunes }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;left:0;right:0;bottom:0;height:44%"><dc-import name="LuminaDunes" hint-size="100%,100%"></dc-import></div></sc-if>
+<div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 40px 140px;text-align:center">
+<dc-import name="LuminaSun" style="width:112px;height:112px" hint-size="112px,112px"></dc-import>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:60px;line-height:1;margin-top:6px">Lumina</div>
+<div style="width:64px;height:2px;background:#E39B45;margin:24px 0 28px"></div>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:58px;line-height:1.05;letter-spacing:-0.02em;max-width:520px;text-wrap:balance">Um instante para a sua fé.</div>
+<div style="font-size:20px;line-height:1.5;color:#5B6577;margin-top:20px;max-width:360px">Palavras que acolhem e acompanham seu caminho.</div>
+</div>
+<div style="position:absolute;left:40px;bottom:36px;z-index:1;font-size:10px;letter-spacing:.24em;color:#8A7F72;line-height:1.8;display:flex;flex-direction:column;gap:8px"><div>COM RESPEITO<br>A TODAS AS CRENÇAS.</div><div style="width:70px;height:1px;background:#E39B45"></div></div>
+<div style="position:relative;z-index:1;padding:40px 48px 40px 0;display:flex">
+<div style="flex:1;background:#FFFDF9;border:1px solid #EFE4D4;border-radius:16px;box-shadow:0 20px 50px -30px rgba(80,55,30,.25);padding:48px 44px;display:flex;flex-direction:column;justify-content:center">
+<div style="width:64px;height:64px;border-radius:50%;background:#FBEBD6;display:flex;align-items:center;justify-content:center;color:#D98A3A;font-size:28px">✓</div>
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500;margin-top:28px">LINK ENVIADO</div>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:38px;line-height:1.1;margin-top:12px">Verifique seu e-mail.</div>
+<div style="font-size:16px;line-height:1.5;color:#5B6577;margin-top:10px">Enviamos um link para <span style="color:#1E3A5F;font-weight:500">maria@email.com</span>. Ele é válido por 30 minutos.</div>
+<div style="height:48px;border-radius:999px;background:#1E3A5F;color:#fff;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:32px;cursor:pointer">Abrir meu e-mail</div>
+<div style="height:46px;border-radius:999px;border:1.5px solid #1E3A5F;font-size:15px;font-weight:500;display:flex;align-items:center;justify-content:center;margin-top:12px;color:#1E3A5F;opacity:.55">Reenviar link em 0:45</div>
+<div style="font-size:13px;line-height:1.5;color:#5B6577;margin-top:24px;text-align:center">Não encontrou? Confira a caixa de spam ou <a href="#">use outro e-mail</a>.</div>
+</div></div></div></div>
+
+<div id="w4" style="display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#6E6457">W4 · Recuperar senha — nova senha</div>
+<div style="width:1280px;height:800px;position:relative;background:#FBF5EC;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(60,40,20,.3);display:grid;grid-template-columns:1fr 520px">
+<sc-if value="{{ showDunes }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;left:0;right:0;bottom:0;height:44%"><dc-import name="LuminaDunes" hint-size="100%,100%"></dc-import></div></sc-if>
+<div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 40px 140px;text-align:center">
+<dc-import name="LuminaSun" style="width:112px;height:112px" hint-size="112px,112px"></dc-import>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:60px;line-height:1;margin-top:6px">Lumina</div>
+<div style="width:64px;height:2px;background:#E39B45;margin:24px 0 28px"></div>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:58px;line-height:1.05;letter-spacing:-0.02em;max-width:520px;text-wrap:balance">Um novo começo, com calma.</div>
+<div style="font-size:20px;line-height:1.5;color:#5B6577;margin-top:20px;max-width:360px">Você já está quase de volta.</div>
+</div>
+<div style="position:absolute;left:40px;bottom:36px;z-index:1;font-size:10px;letter-spacing:.24em;color:#8A7F72;line-height:1.8;display:flex;flex-direction:column;gap:8px"><div>COM RESPEITO<br>A TODAS AS CRENÇAS.</div><div style="width:70px;height:1px;background:#E39B45"></div></div>
+<div style="position:relative;z-index:1;padding:40px 48px 40px 0;display:flex">
+<div style="flex:1;background:#FFFDF9;border:1px solid #EFE4D4;border-radius:16px;box-shadow:0 20px 50px -30px rgba(80,55,30,.25);padding:48px 44px;display:flex;flex-direction:column;justify-content:center">
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">NOVA SENHA</div>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:38px;line-height:1.1;margin-top:12px">Crie uma nova senha.</div>
+<div style="font-size:16px;line-height:1.5;color:#5B6577;margin-top:10px">Escolha uma senha diferente das anteriores.</div>
+<div style="display:flex;flex-direction:column;gap:16px;margin-top:28px">
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:14px;font-weight:500">Nova senha</div><div style="position:relative"><input type="password" value="Esperanca2026" style="box-sizing:border-box;width:100%;height:44px;border:1px solid #E3DACB;border-radius:8px;padding:0 80px 0 14px;font:15px 'DM Sans';background:#fff;color:#1E3A5F;outline:none"><div style="position:absolute;right:14px;top:13px;font-size:13px;color:#5B6577">Mostrar</div></div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:14px;font-weight:500">Confirmar nova senha</div><input type="password" value="Esperanca2026" style="box-sizing:border-box;width:100%;height:44px;border:1px solid #E3DACB;border-radius:8px;padding:0 14px;font:15px 'DM Sans';background:#fff;color:#1E3A5F;outline:none"></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;margin-top:18px;font-size:13px;color:#5B6577">
+<div style="display:flex;gap:8px;align-items:center"><span style="color:#3E8B6A">✓</span>Pelo menos 8 caracteres</div>
+<div style="display:flex;gap:8px;align-items:center"><span style="color:#3E8B6A">✓</span>Uma letra maiúscula</div>
+<div style="display:flex;gap:8px;align-items:center"><span style="color:#3E8B6A">✓</span>Um número</div>
+<div style="display:flex;gap:8px;align-items:center"><span style="color:#3E8B6A">✓</span>As senhas coincidem</div>
+</div>
+<div style="height:48px;border-radius:999px;background:#1E3A5F;color:#fff;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:28px;cursor:pointer">Salvar e entrar</div>
+</div></div></div></div>
+
+<div id="w5" style="display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#6E6457">W5 · Home</div>
+<div style="width:1280px;height:800px;position:relative;background:#FBF5EC;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(60,40,20,.3);display:grid;grid-template-columns:232px 1fr">
+<dc-import name="LuminaSidebar" section="inicio" hint-size="232px,800px"></dc-import>
+<div style="padding:36px 44px;display:flex;flex-direction:column;gap:24px;overflow:hidden">
+<div style="display:flex;justify-content:space-between;align-items:flex-end">
+<div><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">DOMINGO, 2 DE NOVEMBRO</div><div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:40px;line-height:1.1;margin-top:8px">{{ greeting }}, Maria.</div></div>
+<div style="display:flex;gap:12px;align-items:center;position:relative">
+<div onClick="{{ toggleWeb }}" style="height:42px;border:1px solid #E3DACB;border-radius:999px;background:#FFFDF9;display:flex;align-items:center;gap:8px;padding:0 16px 0 7px;font-size:14px;cursor:pointer" style-hover="border-color:#E39B45"><div style="width:28px;height:28px;border-radius:50%;background:#FBEBD6;display:flex;align-items:center;justify-content:center"><dc-import name="LuminaSun" style="width:18px;height:18px" hint-size="18px,18px"></dc-import></div><span style="color:#8A7F72">Minha tradição:</span><span style="font-weight:600">{{ rel.name }}</span><span style="color:#5B6577">⌄</span></div>
+<div style="width:220px;height:42px;border:1px solid #E3DACB;border-radius:999px;background:#FFFDF9;display:flex;align-items:center;padding:0 18px;font-size:14px;color:#A3A7AE">Buscar passagens, orações…</div>
+<sc-if value="{{ webOpen }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:52px;left:0;z-index:5;width:320px;background:#FFFDF9;border:1px solid #EFE4D4;border-radius:14px;box-shadow:0 24px 48px -20px rgba(60,40,20,.35);padding:8px"><div style="padding:10px 12px 8px;font-size:12px;color:#8A7F72;line-height:1.45">Escolha sua tradição para personalizar orações, leituras e lembretes.</div><sc-for list="{{ options }}" as="o" hint-placeholder-count="7"><div onClick="{{ o.pick }}" style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 12px;border-radius:10px;cursor:pointer" style-hover="background:#F6EDE0"><div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:500">{{ o.name }}</span><span style="font-size:12px;color:#8A7F72">{{ o.hint }}</span></div><span style="color:#D98A3A;font-weight:600;font-size:16px">{{ o.check }}</span></div></sc-for></div></sc-if>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1.6fr 1fr;gap:20px">
+<div style="position:relative;overflow:hidden;border-radius:16px;background:#FFF8EE;border:1px solid #EFE4D4;padding:32px 36px;min-height:250px;display:flex;flex-direction:column">
+<div style="position:absolute;left:0;right:0;bottom:0;height:55%"><dc-import name="LuminaDunes" hint-size="100%,100%"></dc-import></div>
+<div style="position:relative;font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">PALAVRA DO DIA</div>
+<div style="position:relative;font-family:'Source Serif 4',serif;font-weight:500;font-size:28px;line-height:1.3;margin-top:14px;max-width:560px;text-wrap:pretty">{{ rel.verse }}</div>
+<div style="position:relative;font-size:14px;color:#5B6577;margin-top:12px">{{ rel.ref }}</div>
+<div style="flex:1"></div>
+<div style="position:relative;display:flex;gap:10px;margin-top:20px">
+<div style="height:38px;padding:0 18px;border-radius:999px;background:#1E3A5F;color:#fff;font-size:14px;font-weight:500;display:flex;align-items:center">Ler reflexão</div>
+<div style="height:38px;padding:0 18px;border-radius:999px;background:#FFFDF9;border:1px solid #E3DACB;font-size:14px;display:flex;align-items:center">Ouvir · 3 min</div>
+<div style="height:38px;padding:0 18px;border-radius:999px;background:#FFFDF9;border:1px solid #E3DACB;font-size:14px;display:flex;align-items:center">Salvar</div>
+</div></div>
+<div style="border-radius:16px;background:#1E3A5F;color:#fff;padding:28px 30px;display:flex;flex-direction:column">
+<div style="font-size:11px;letter-spacing:.24em;color:#F0B872;font-weight:500">MOMENTO DE ORAÇÃO</div>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:26px;line-height:1.2;margin-top:14px">{{ prayerTitle }}</div>
+<div style="font-size:14px;color:#C7D1DF;margin-top:8px;line-height:1.5">{{ prayerSub }}</div>
+<div style="flex:1"></div>
+<div style="display:flex;align-items:center;gap:14px;margin-top:20px"><div style="width:52px;height:52px;border-radius:50%;background:#E39B45;color:#1E3A5F;display:flex;align-items:center;justify-content:center;font-size:18px;padding-left:3px;box-sizing:border-box">▶</div><div style="font-size:14px;color:#C7D1DF">Áudio guiado · 6 min</div></div>
+</div></div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px">
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:24px;display:flex;flex-direction:column;gap:10px">
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">CONTINUE SUA LEITURA</div>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:20px">{{ rel.plan }}</div>
+<div style="font-size:13px;color:#5B6577">{{ rel.step }}</div>
+<div style="height:6px;border-radius:3px;background:#F1E6D6;margin-top:6px"><div style="width:{{ rel.pct }};height:100%;border-radius:3px;background:#E39B45"></div></div>
+<a href="#" style="font-size:14px;margin-top:6px">Continuar leitura →</a>
+</div>
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:24px;display:flex;flex-direction:column;gap:10px">
+<div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">DIÁRIO DE GRATIDÃO</div>
+<div style="font-family:'Source Serif 4',serif;font-weight:600;font-size:20px">Pelo que você agradece hoje?</div>
+<div style="flex:1;min-height:56px;border:1px dashed #E3DACB;border-radius:10px;padding:12px;font-size:14px;color:#A3A7AE">Escreva algumas palavras…</div>
+</div>
+<div style="border-radius:16px;background:#FFFDF9;border:1px solid #EFE4D4;padding:24px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:11px;letter-spacing:.24em;color:#D98A3A;font-weight:500">{{ rel.intent }}</div><a href="#" style="font-size:13px">+ Nova</a></div>
+<div style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+<sc-for list="{{ intents }}" as="i" hint-placeholder-count="3"><div style="display:flex;gap:10px;align-items:center"><div style="width:6px;height:6px;border-radius:50%;background:#E39B45"></div>{{ i.t }}</div></sc-for>
+</div>
+<div style="font-size:12px;color:#8A7F72;border-top:1px solid #F1E6D6;padding-top:10px">Próximo lembrete: 21:00 · Oração da noite</div>
+</div>
+</div>
+</div></div></div>
+
+</div></section>
+
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;religiao&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;catolica&quot;,&quot;evangelica&quot;,&quot;espirita&quot;,&quot;judaica&quot;,&quot;islamica&quot;,&quot;budista&quot;,&quot;livre&quot;],&quot;default&quot;:&quot;catolica&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;periodo&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;manha&quot;,&quot;tarde&quot;,&quot;noite&quot;],&quot;default&quot;:&quot;manha&quot;,&quot;tsType&quot;:&quot;'manha'|'tarde'|'noite'&quot;},&quot;showDunes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const RELIGIOES = {
+  catolica: { name: 'Católica', hint: 'Terço, Evangelho do dia, santos', verse: '{{ rel.verse }}', ref: 'Mateus 11:28', prayers: ['Oração da manhã', 'Ângelus', 'Exame de consciência'], sub: 'Um momento guiado para rezar e entregar o dia a Deus.', plan: 'Evangelho do dia', step: 'Lucas 15 · Dia 8 de 21', pct: '38%', intent: 'SUAS INTENÇÕES', intents: ['Saúde da minha mãe', 'Sabedoria no novo trabalho', 'Paz para a família'] },
+  evangelica: { name: 'Evangélica', hint: 'Devocionais, planos bíblicos, louvor', verse: '“O Senhor é o meu pastor; nada me faltará.”', ref: 'Salmos 23:1', prayers: ['Devocional da manhã', 'Pausa com Deus', 'Oração antes de dormir'], sub: 'Leitura, louvor e oração para caminhar com Deus hoje.', plan: 'Bíblia em um ano', step: 'Hebreus 11 · Dia 306 de 365', pct: '84%', intent: 'PEDIDOS DE ORAÇÃO', intents: ['Saúde da minha mãe', 'Direção no novo trabalho', 'Célula de quinta-feira'] },
+  espirita: { name: 'Espírita', hint: 'Preces, Evangelho no Lar, vibrações', verse: '“Fora da caridade não há salvação.”', ref: 'O Evangelho segundo o Espiritismo, cap. 15', prayers: ['Prece da manhã', 'Momento de vibração', 'Evangelho no Lar'], sub: 'Uma prece guiada para harmonizar pensamentos e sentimentos.', plan: 'O Evangelho segundo o Espiritismo', step: 'Cap. 5 · Bem-aventurados os aflitos', pct: '20%', intent: 'VIBRAÇÕES', intents: ['Saúde da minha mãe', 'Equilíbrio no trabalho', 'Harmonia no lar'] },
+  judaica: { name: 'Judaica', hint: 'Sidur, Parashá, Shabat', verse: '“Ouve, Israel: o Senhor é nosso Deus, o Senhor é Um.”', ref: 'Deuteronômio 6:4', prayers: ['Shacharit', 'Minchá', 'Maariv'], sub: 'Orações do dia com hebraico, transliteração e tradução.', plan: 'Parashá da semana', step: 'Aliyá 3 de 7', pct: '43%', intent: 'PEDIDOS DE CURA', intents: ['Saúde da minha mãe', 'Bênção no novo trabalho', 'Preparar o Shabat'] },
+  islamica: { name: 'Islâmica', hint: 'Salat, Alcorão, Qibla', verse: '“Em verdade, com a dificuldade vem a facilidade.”', ref: 'Alcorão 94:6', prayers: ['Fajr', 'Dhuhr · Asr', 'Maghrib · Isha'], sub: 'Horários de oração da sua cidade, com lembrete e direção da Qibla.', plan: 'Leitura do Alcorão', step: 'Surata Al-Kahf · Juz 15', pct: '50%', intent: 'SÚPLICAS (DUÁ)', intents: ['Saúde da minha mãe', 'Sustento no novo trabalho', 'Paz para a família'] },
+  budista: { name: 'Budista', hint: 'Meditação, Dhammapada, Metta', verse: '“O ódio nunca cessa pelo ódio; somente pelo amor ele cessa.”', ref: 'Dhammapada, verso 5', prayers: ['Meditação da manhã', 'Pausa de atenção plena', 'Metta antes de dormir'], sub: 'Uma meditação guiada para acalmar a mente e cultivar compaixão.', plan: 'Dhammapada', step: 'Capítulo 1 · Versos pareados', pct: '30%', intent: 'DEDICAÇÕES', intents: ['Saúde da minha mãe', 'Clareza no novo trabalho', 'Todos os seres em paz'] },
+  livre: { name: 'Espiritualidade livre', hint: 'Reflexões e gratidão, sem tradição específica', verse: '“Respire. Este momento também é sagrado.”', ref: 'Reflexão Lumina', prayers: ['Respiração da manhã', 'Pausa consciente', 'Gratidão da noite'], sub: 'Alguns minutos para respirar, agradecer e se reconectar.', plan: 'Textos de sabedoria', step: 'Gratidão · Dia 8 de 21', pct: '38%', intent: 'SUAS INTENÇÕES', intents: ['Saúde da minha mãe', 'Coragem no novo trabalho', 'Paz para a família'] }
+};
+class Component extends DCLogic {
+  state = { religiao: null, webOpen: false, mobOpen: false };
+  renderVals() {
+    const p = this.props.periodo ?? 'manha';
+    const idx = { manha: 0, tarde: 1, noite: 2 }[p] ?? 0;
+    const greeting = ['Bom dia', 'Boa tarde', 'Boa noite'][idx];
+    const key = this.state.religiao ?? this.props.religiao ?? 'catolica';
+    const rel = RELIGIOES[key] || RELIGIOES.catolica;
+    const options = Object.entries(RELIGIOES).map(([k, r]) => ({
+      name: r.name, hint: r.hint, check: k === key ? '✓' : '',
+      pick: () => this.setState({ religiao: k, webOpen: false, mobOpen: false })
+    }));
+    return {
+      greeting, rel, options, prayerTitle: rel.prayers[idx], prayerSub: rel.sub,
+      intents: rel.intents.map(t => ({ t })),
+      webOpen: this.state.webOpen, mobOpen: this.state.mobOpen,
+      toggleWeb: () => this.setState(s => ({ webOpen: !s.webOpen })),
+      toggleMob: () => this.setState(s => ({ mobOpen: !s.mobOpen })),
+      showDunes: this.props.showDunes ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>

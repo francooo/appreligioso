@@ -1,32 +1,36 @@
-import Svg, { Circle, Line } from 'react-native-svg';
+import Svg, { Circle, Polygon } from 'react-native-svg';
 import { colors } from '../theme';
 
-const RAYS = 20;
+// Sol do Lumina (LuminaSun do design system): 24 raios em cunha + círculo vazado.
+const RAYS = 24;
+const RAY_DEG = 2.2;
 
-export function SunLogo({ size = 96 }: { size?: number }) {
+export function SunLogo({ size = 96, color = colors.gold }: { size?: number; color?: string }) {
   const c = size / 2;
-  const core = size * 0.24;
-  const inner = size * 0.32;
+  const inner = size * 0.3;
+  const outer = size * 0.485;
+  const core = size * 0.23;
+  const stroke = Math.max(1.5, size * 0.018);
+
+  const point = (deg: number, r: number) => {
+    const a = ((deg - 90) * Math.PI) / 180;
+    return `${c + Math.cos(a) * r},${c + Math.sin(a) * r}`;
+  };
 
   return (
     <Svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-      <Circle cx={c} cy={c} r={core} stroke={colors.gold} strokeWidth={1.6} fill="none" />
       {Array.from({ length: RAYS }, (_, i) => {
-        const angle = (i / RAYS) * Math.PI * 2;
-        const outer = i % 2 === 0 ? size * 0.48 : size * 0.42;
+        const start = i * (360 / RAYS);
+        const end = start + RAY_DEG;
         return (
-          <Line
+          <Polygon
             key={i}
-            x1={c + Math.cos(angle) * inner}
-            y1={c + Math.sin(angle) * inner}
-            x2={c + Math.cos(angle) * outer}
-            y2={c + Math.sin(angle) * outer}
-            stroke={colors.gold}
-            strokeWidth={1.4}
-            strokeLinecap="round"
+            points={`${point(start, inner)} ${point(start, outer)} ${point(end, outer)} ${point(end, inner)}`}
+            fill={color}
           />
         );
       })}
+      <Circle cx={c} cy={c} r={core} stroke={color} strokeWidth={stroke} fill="none" />
     </Svg>
   );
 }
