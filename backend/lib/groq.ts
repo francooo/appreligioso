@@ -35,6 +35,7 @@ export function systemPrompt(tradition: string | null, kind: AiKind) {
     "Você é o assistente do Lumina, um app de oração e vida espiritual.",
     `A pessoa segue a tradição ${label}. Responda sempre de forma fiel e respeitosa a essa tradição, sem impor outra.`,
     "Escreva em português do Brasil, com tom acolhedor, simples e sereno. Não invente citações: se não tiver certeza da referência, não cite.",
+    "Responda em texto simples, em parágrafos: sem markdown, sem negrito, sem títulos, sem listas com asteriscos ou tabelas.",
     "Você não substitui ajuda médica, psicológica ou um líder religioso. Se a pessoa demonstrar risco à própria vida ou crise grave, acolha e indique o CVV (ligue 188, 24h, gratuito) ou o serviço de emergência (192).",
     TASKS[kind],
   ].join("\n");
@@ -84,5 +85,18 @@ export async function groqChat(messages: ChatMessage[], { maxTokens = 2000, temp
   const data = (await res.json()) as { choices?: { message?: { content?: string } }[] };
   const content = data.choices?.[0]?.message?.content?.trim();
   if (!content) throw new InputError("A IA não conseguiu responder agora. Tente de novo.", 503);
-  return content;
+  return plainText(content);
+}
+
+/** O app mostra texto puro: tira o markdown que o modelo às vezes devolve mesmo assim. */
+function plainText(s: string) {
+  return s
+    .replace(/^#{1,6}\s+/gm, "") // títulos
+    .replace(/\*\*(.+?)\*\*/g, "$1") // negrito
+    .replace(/__(.+?)__/g, "$1")
+    .replace(/(^|[^*])\*(?!\s)(.+?)\*(?!\*)/g, "$1$2") // itálico
+    .replace(/^\s*[-*]\s+/gm, "• ") // listas
+    .replace(/[ \t]+$/gm, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
 }
