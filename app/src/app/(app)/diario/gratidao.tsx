@@ -1,5 +1,5 @@
 import Head from 'expo-router/head';
-import { GratitudeWeb } from '../../../screens/web/GratitudeWeb';
+import { GratitudeWeb } from '../../../screens/main/GratitudeWeb';
 
 export default function GratitudeWebRoute() {
   return (

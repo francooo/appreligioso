@@ -1,5 +1,5 @@
 import { ReactNode, useState } from 'react';
-import { Pressable, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
+import { Platform, Pressable, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Button } from '../../components/Button';
 import { useToast } from '../../components/Toast';
@@ -167,7 +167,8 @@ function ReminderRow({ reminder: r, last }: { reminder: Reminder; last: boolean 
           onPress={() => remove.mutate(r.id, { onSuccess: () => toast('Lembrete excluído.'), onError: (e) => toast(e.message) })}
           accessibilityLabel={`Excluir ${r.label}`}
           hitSlop={8}
-          style={{ opacity: hovered ? 1 : 0 }}
+          // No toque não existe hover: no celular o botão fica sempre visível.
+          style={{ opacity: hovered || Platform.OS !== 'web' ? 1 : 0 }}
         >
           <Ionicons name="trash-outline" size={16} color={colors.muted} />
         </Pressable>
@@ -265,7 +266,7 @@ const styles = StyleSheet.create({
   column: { flexDirection: 'column', alignItems: 'stretch' },
   list: { paddingVertical: 8 },
   reminder: { flexDirection: 'row', alignItems: 'center', gap: 18, paddingVertical: 17 },
-  time: { fontFamily: fonts.serif, fontSize: 21, color: colors.title, width: 84 },
+  time: { fontFamily: fonts.serif, fontSize: 21, color: colors.title, width: 66 },
   label: { fontFamily: fonts.regular, fontSize: 16, color: colors.navy },
   off: { color: colors.text },
   meta: { ...type.meta, fontSize: 13, color: colors.text, marginTop: 2 },

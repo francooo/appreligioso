@@ -18,6 +18,7 @@ export function PlansWeb() {
   const save = useSaveProgress();
   const { width } = useWindowDimensions();
   const columns = width >= 1180 ? 4 : width >= 760 ? 2 : 1;
+  const narrow = width < 700;
 
   const [filter, setFilter] = useState<PlanFilter>('todos');
   const [query, setQuery] = useState('');
@@ -67,8 +68,8 @@ export function PlansWeb() {
       />
 
       {current ? (
-        <Card style={styles.current}>
-          <PlanCover style={styles.currentCover} />
+        <Card style={[styles.current, narrow && styles.currentNarrow]}>
+          <PlanCover style={[styles.currentCover, narrow && styles.currentCoverNarrow]} />
           <View style={{ flex: 1, gap: 8 }}>
             <Eyebrow>Em andamento</Eyebrow>
             <Text style={styles.currentTitle}>{current.plan_title}</Text>
@@ -78,8 +79,8 @@ export function PlansWeb() {
           <Button title="Continuar leitura" loading={save.isPending} onPress={() => advance(current)} />
         </Card>
       ) : (
-        <Card style={styles.current}>
-          <PlanCover style={styles.currentCover} />
+        <Card style={[styles.current, narrow && styles.currentNarrow]}>
+          <PlanCover style={[styles.currentCover, narrow && styles.currentCoverNarrow]} />
           <View style={{ flex: 1, gap: 8 }}>
             <Eyebrow>Em andamento</Eyebrow>
             <Text style={styles.currentTitle}>Nenhum plano em andamento</Text>
@@ -135,6 +136,7 @@ function PlanAction({ label, onPress }: { label: string; onPress: () => void }) 
 const styles = StyleSheet.create({
   search: {
     width: 298,
+    maxWidth: '100%',
     height: 44,
     paddingHorizontal: 18,
     borderRadius: radii.pill,
@@ -148,6 +150,8 @@ const styles = StyleSheet.create({
   } as object,
   current: { flexDirection: 'row', alignItems: 'center', gap: 28, padding: 28 },
   currentCover: { width: 180, height: 120 },
+  currentNarrow: { flexDirection: 'column', alignItems: 'stretch', gap: 18, padding: 20 },
+  currentCoverNarrow: { width: '100%', height: 130 },
   currentTitle: { fontFamily: fonts.serif, fontSize: 28, lineHeight: 34, color: colors.title },
   meta: { ...type.meta, fontSize: 14, color: colors.text },
   exploreHead: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' },

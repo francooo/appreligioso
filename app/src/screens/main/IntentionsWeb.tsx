@@ -7,6 +7,7 @@ import { INTENTION_TAGS } from '../../content/traditions';
 import { Intention } from '../../lib/api';
 import { relativeAge } from '../../lib/format';
 import { useIntentionMutations, useIntentions, useTradition } from '../../lib/queries';
+import { useLayout } from '../../lib/responsive';
 import { colors, fonts, radii, type } from '../../theme';
 
 type Tab = 'active' | 'answered';
@@ -93,6 +94,7 @@ function IntentionRow({ intention: i }: { intention: Intention }) {
   const { update, remove } = useIntentionMutations();
   const [praying, setPraying] = useState(false);
   const answered = i.status === 'answered';
+  const { isNarrow } = useLayout();
 
   const meta = answered
     ? relativeAge(i.answered_at ?? i.created_at, 'Atendida')
@@ -100,14 +102,14 @@ function IntentionRow({ intention: i }: { intention: Intention }) {
 
   return (
     <Card padded={false} style={styles.item}>
-      <View style={styles.itemRow}>
+      <View style={[styles.itemRow, isNarrow && styles.itemRowNarrow]}>
         <View style={[styles.dot, answered && { backgroundColor: colors.success }]} />
         <View style={{ flex: 1 }}>
           <Text style={[styles.itemText, answered && styles.itemAnswered]}>{i.text}</Text>
           <Text style={styles.meta}>{meta}</Text>
         </View>
         {answered ? (
-          <View style={styles.actions}>
+          <View style={[styles.actions, isNarrow && styles.actionsNarrow]}>
             <Button
               title="Reabrir"
               size="sm"
@@ -124,7 +126,7 @@ function IntentionRow({ intention: i }: { intention: Intention }) {
             />
           </View>
         ) : (
-          <View style={styles.actions}>
+          <View style={[styles.actions, isNarrow && styles.actionsNarrow]}>
             <Button title={praying ? 'Concluir' : 'Orar agora'} size="sm" onPress={() => setPraying((p) => !p)} />
             <Button
               title="Marcar como atendida"
@@ -179,7 +181,7 @@ const styles = StyleSheet.create({
     outlineStyle: 'none',
   } as object,
   composerFoot: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' },
-  tags: { flexDirection: 'row', gap: 8, flexWrap: 'wrap' },
+  tags: { flexDirection: 'row', gap: 8, flexWrap: 'wrap', flexShrink: 1 },
   tabs: { flexDirection: 'row', gap: 28, borderBottomWidth: 1, borderBottomColor: colors.cardBorder },
   tab: { paddingBottom: 12, borderBottomWidth: 2, borderBottomColor: 'transparent', marginBottom: -1 },
   tabActive: { borderBottomColor: colors.navy },
@@ -187,6 +189,8 @@ const styles = StyleSheet.create({
   tabTextActive: { fontFamily: fonts.medium, color: colors.navy },
   item: { paddingHorizontal: 22, paddingVertical: 18 },
   itemRow: { flexDirection: 'row', alignItems: 'center', gap: 16 },
+  itemRowNarrow: { flexWrap: 'wrap', rowGap: 12 },
+  actionsNarrow: { width: '100%', paddingLeft: 23, flexWrap: 'wrap' },
   dot: { width: 7, height: 7, borderRadius: 4, backgroundColor: colors.gold },
   itemText: { fontFamily: fonts.medium, fontSize: 17, color: colors.navy },
   itemAnswered: { color: colors.text },

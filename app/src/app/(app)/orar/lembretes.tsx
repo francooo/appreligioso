@@ -1,5 +1,5 @@
 import Head from 'expo-router/head';
-import { RemindersWeb } from '../../../screens/web/RemindersWeb';
+import { RemindersWeb } from '../../../screens/main/RemindersWeb';
 
 export default function RemindersWebRoute() {
   return (

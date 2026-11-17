@@ -1,5 +1,5 @@
 import Head from 'expo-router/head';
-import { IntentionsWeb } from '../../../screens/web/IntentionsWeb';
+import { IntentionsWeb } from '../../../screens/main/IntentionsWeb';
 
 export default function IntentionsWebRoute() {
   return (

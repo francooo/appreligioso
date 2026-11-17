@@ -1,5 +1,5 @@
 import Head from 'expo-router/head';
-import { HistoryWeb } from '../../../screens/web/HistoryWeb';
+import { HistoryWeb } from '../../../screens/main/HistoryWeb';
 
 export default function HistoryWebRoute() {
   return (

@@ -1,5 +1,5 @@
 import Head from 'expo-router/head';
-import { TextsWeb } from '../../../screens/web/TextsWeb';
+import { TextsWeb } from '../../../screens/main/TextsWeb';
 
 export default function TextsWebRoute() {
   return (

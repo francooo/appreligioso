@@ -1,5 +1,5 @@
 import Head from 'expo-router/head';
-import { AccountWeb } from '../../../screens/web/AccountWeb';
+import { AccountWeb } from '../../../screens/main/AccountWeb';
 
 export default function ContaRoute() {
   return (

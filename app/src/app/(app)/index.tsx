@@ -1,5 +1,5 @@
 import Head from 'expo-router/head';
-import { HomeWeb } from '../../screens/web/HomeWeb';
+import { HomeWeb } from '../../screens/main/HomeWeb';
 
 export default function HomeRoute() {
   return (

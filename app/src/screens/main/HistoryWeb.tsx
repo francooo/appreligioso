@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Pressable, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
+import { Platform, Pressable, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Calendar } from '../../components/Calendar';
 import { useToast } from '../../components/Toast';
@@ -143,7 +143,8 @@ function EntryCard({ entry }: { entry: JournalEntry }) {
                   onPress={() => setConfirming(true)}
                   accessibilityLabel="Excluir registro"
                   hitSlop={8}
-                  style={{ opacity: hovered ? 1 : 0 }}
+                  // No toque não existe hover: no celular o botão fica sempre visível.
+                  style={{ opacity: hovered || Platform.OS !== 'web' ? 1 : 0 }}
                 >
                   <Ionicons name="trash-outline" size={15} color={colors.muted} />
                 </Pressable>
@@ -169,6 +170,7 @@ function EntryCard({ entry }: { entry: JournalEntry }) {
 const styles = StyleSheet.create({
   search: {
     width: 298,
+    maxWidth: '100%',
     height: 44,
     paddingHorizontal: 18,
     borderRadius: radii.pill,

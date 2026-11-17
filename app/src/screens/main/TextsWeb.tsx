@@ -20,6 +20,7 @@ export function TextsWeb() {
   const save = useSaveProgress();
   const { width } = useWindowDimensions();
   const twoColumns = width >= 900;
+  const narrow = width < 700;
 
   const [query, setQuery] = useState('');
   const [opened, setOpened] = useState<string | null>(null);
@@ -57,7 +58,7 @@ export function TextsWeb() {
 
       <Card padded={false} style={styles.resume}>
         <Dunes height="72%" />
-        <View style={styles.resumeBody}>
+        <View style={[styles.resumeBody, narrow && styles.resumeBodyNarrow]}>
           <View style={{ gap: 6, flexShrink: 1 }}>
             <Eyebrow>{last.data ? 'Continuar de onde parou' : 'Passagem do dia'}</Eyebrow>
             <Text style={styles.resumeTitle}>{last.data?.plan_title ?? rel.ref}</Text>
@@ -134,6 +135,7 @@ function normalize(s: string) {
 const styles = StyleSheet.create({
   search: {
     width: 358,
+    maxWidth: '100%',
     height: 44,
     paddingHorizontal: 18,
     borderRadius: radii.pill,
@@ -156,6 +158,7 @@ const styles = StyleSheet.create({
   },
   resumeTitle: { fontFamily: fonts.serif, fontSize: 26, color: colors.title },
   resumeActions: { flexDirection: 'row', gap: 10 },
+  resumeBodyNarrow: { flexDirection: 'column', alignItems: 'flex-start', paddingHorizontal: 22, paddingVertical: 22 },
   smallPill: { height: 44, paddingHorizontal: 22 },
   meta: { ...type.meta, fontSize: 14, color: colors.text },
   opened: { flexDirection: 'row', gap: 16, alignItems: 'flex-start', borderColor: colors.goldLight },

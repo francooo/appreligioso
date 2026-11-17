@@ -1,17 +1,12 @@
-import { Platform } from 'react-native';
 import { Redirect, Slot } from 'expo-router';
 import { AppShell } from '../../components/AppShell';
 import { ToastProvider } from '../../components/Toast';
 import { useAuth } from '../../context/AuthContext';
-import { HomeScreen } from '../../screens/HomeScreen';
 
-// Telas logadas. Nesta etapa só a web recebe as telas novas (sidebar + W5–W15);
-// no Android/iOS continua a Home provisória.
+// Telas logadas (web e celular). A moldura escolhe sidebar (web larga) ou abas (celular).
 export default function AppLayout() {
   const { user } = useAuth();
   if (!user) return <Redirect href="/entrar" />;
-
-  if (Platform.OS !== 'web') return <HomeScreen />;
 
   return (
     <ToastProvider>

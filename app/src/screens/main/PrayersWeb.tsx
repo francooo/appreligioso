@@ -29,6 +29,7 @@ export function PrayersWeb() {
   const toggleSaved = useToggleSaved();
   const { width } = useWindowDimensions();
   const wide = width >= 1000;
+  const narrow = width < 700;
 
   const [reading, setReading] = useState<string | null>(null);
 
@@ -43,7 +44,7 @@ export function PrayersWeb() {
     <View style={{ gap: 24 }}>
       <PageHeader eyebrow="Orar" title="Orações" />
 
-      <HighlightCard style={styles.hero}>
+      <HighlightCard style={[styles.hero, narrow && styles.heroNarrow]}>
         <View style={{ flex: 1, gap: 8 }}>
           <Eyebrow style={{ color: colors.goldLight }}>{`Agora · ${now.period}`}</Eyebrow>
           <Text style={styles.heroTitle}>{now.name}</Text>
@@ -163,6 +164,7 @@ export function PrayersWeb() {
 
 const styles = StyleSheet.create({
   hero: { flexDirection: 'row', alignItems: 'center', gap: 24, paddingHorizontal: 34, paddingVertical: 32 },
+  heroNarrow: { flexDirection: 'column', alignItems: 'flex-start', gap: 20, paddingHorizontal: 24, paddingVertical: 26 },
   heroTitle: { fontFamily: fonts.serif, fontSize: 32, lineHeight: 38, color: colors.white },
   heroSub: { fontFamily: fonts.regular, fontSize: 15, color: colors.navyTextLight },
   heroActions: { flexDirection: 'row', alignItems: 'center', gap: 16 },

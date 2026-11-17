@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { Pressable, StyleProp, StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native';
+import { useLayout } from '../lib/responsive';
 import { colors, fonts, radii, shadows, type } from '../theme';
 
 // Primitivos visuais do design system Lumina, usados em várias telas.
@@ -9,13 +10,14 @@ export function Eyebrow({ children, style }: { children: ReactNode; style?: Styl
 }
 
 export function PageHeader({ eyebrow, title, right }: { eyebrow?: string; title: string; right?: ReactNode }) {
+  const { isNarrow } = useLayout();
   return (
-    <View style={styles.pageHeader}>
+    <View style={[styles.pageHeader, isNarrow && styles.pageHeaderNarrow]}>
       <View style={{ gap: 6, flexShrink: 1 }}>
         {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
-        <Text style={styles.pageTitle}>{title}</Text>
+        <Text style={[styles.pageTitle, isNarrow && styles.pageTitleNarrow]}>{title}</Text>
       </View>
-      {right ? <View style={styles.headerRight}>{right}</View> : null}
+      {right ? <View style={[styles.headerRight, isNarrow && styles.headerRightNarrow]}>{right}</View> : null}
     </View>
   );
 }
@@ -128,6 +130,9 @@ const styles = StyleSheet.create({
   pageHeader: { flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between', gap: 16 },
   pageTitle: { ...type.title, color: colors.title },
   headerRight: { flexDirection: 'row', alignItems: 'center', gap: 10 },
+  pageHeaderNarrow: { flexDirection: 'column', alignItems: 'stretch', gap: 14 },
+  pageTitleNarrow: { fontSize: 32, lineHeight: 36 },
+  headerRightNarrow: { flexWrap: 'wrap', width: '100%' },
   card: {
     backgroundColor: colors.paper,
     borderWidth: 1,
@@ -151,7 +156,7 @@ const styles = StyleSheet.create({
   chipText: { fontFamily: fonts.medium, fontSize: 13, color: colors.navy },
   chipTextActive: { color: colors.white },
   tagText: { fontSize: 12, color: colors.tagText },
-  pills: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
+  pills: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, flexShrink: 1 },
   toggleTrack: {
     width: 38,
     height: 22,

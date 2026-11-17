@@ -1,30 +1,51 @@
 import { ReactNode } from 'react';
-import { ScrollView, StyleSheet, View, useWindowDimensions } from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useLayout } from '../lib/responsive';
 import { colors } from '../theme';
+import { BottomTabs, SubTabs } from './MobileNav';
 import { Sidebar } from './Sidebar';
-import { TopNav } from './TopNav';
 
-const DESKTOP_MIN_WIDTH = 1024;
-
-/** Moldura das telas logadas na web: sidebar + área de conteúdo rolável. */
+/**
+ * Moldura das telas logadas.
+ * - Web ≥ 1024 px: sidebar do mockup + conteúdo rolável.
+ * - Celular (app nativo) e web estreita: subpáginas no topo, conteúdo rolável e abas embaixo.
+ */
 export function AppShell({ children }: { children: ReactNode }) {
-  const { width } = useWindowDimensions();
-  const desktop = width >= DESKTOP_MIN_WIDTH;
+  const { isDesktop } = useLayout();
+
+  if (isDesktop) {
+    return (
+      <View style={styles.root}>
+        <Sidebar />
+        <ScrollView style={styles.main} contentContainerStyle={styles.content}>
+          {children}
+        </ScrollView>
+      </View>
+    );
+  }
 
   return (
-    <View style={[styles.root, !desktop && styles.column]}>
-      {desktop ? <Sidebar /> : <TopNav />}
-      <ScrollView style={styles.main} contentContainerStyle={[styles.content, !desktop && styles.contentNarrow]}>
-        {children}
-      </ScrollView>
-    </View>
+    <SafeAreaView edges={['top', 'left', 'right']} style={styles.mobile}>
+      <SubTabs />
+      <KeyboardAvoidingView style={styles.main} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView
+          style={styles.main}
+          contentContainerStyle={styles.mobileContent}
+          keyboardShouldPersistTaps="handled"
+        >
+          {children}
+        </ScrollView>
+      </KeyboardAvoidingView>
+      <BottomTabs />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   root: { flex: 1, flexDirection: 'row', backgroundColor: colors.background, height: '100%' },
-  column: { flexDirection: 'column' },
   main: { flex: 1 },
   content: { paddingHorizontal: 44, paddingTop: 36, paddingBottom: 48, gap: 24, maxWidth: 1180, width: '100%' },
-  contentNarrow: { paddingHorizontal: 20, paddingTop: 24 },
+  mobile: { flex: 1, backgroundColor: colors.background },
+  mobileContent: { paddingHorizontal: 20, paddingTop: 20, paddingBottom: 32, gap: 20, maxWidth: 760, width: '100%', alignSelf: 'center' },
 });

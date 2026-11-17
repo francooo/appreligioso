@@ -42,7 +42,7 @@ export function GratitudeWeb() {
       <PageHeader eyebrow="Diário" title="Gratidão" right={<Text style={styles.date}>{longDateCapitalized()}</Text>} />
 
       <View style={[styles.row, !wide && styles.column]}>
-        <Card style={[styles.form, wide && { flex: 1.5 }]}>
+        <Card style={[styles.form, wide ? { flex: 1.5 } : styles.formNarrow]}>
           <View style={{ gap: 12 }}>
             <Eyebrow>Pergunta de hoje</Eyebrow>
             <Text style={styles.question}>Pelo que você agradece hoje?</Text>
@@ -113,6 +113,7 @@ const styles = StyleSheet.create({
   row: { flexDirection: 'row', gap: 20, alignItems: 'stretch' },
   column: { flexDirection: 'column' },
   form: { padding: 36, minHeight: 600 },
+  formNarrow: { padding: 22, minHeight: 0 },
   question: { fontFamily: fonts.serif, fontSize: 30, lineHeight: 36, color: colors.title },
   line: {
     flexDirection: 'row',

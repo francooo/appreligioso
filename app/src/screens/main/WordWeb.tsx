@@ -1,5 +1,5 @@
 import { ComponentRef, useRef, useState } from 'react';
-import { Pressable, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
+import { Platform, Pressable, Share, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Button } from '../../components/Button';
 import { Dunes } from '../../components/Dunes';
@@ -21,6 +21,7 @@ export function WordWeb() {
   const toast = useToast();
   const { width } = useWindowDimensions();
   const wide = width >= 1180;
+  const narrow = width < 700;
 
   const [date, setDate] = useState(() => new Date());
   const isToday = date.toDateString() === new Date().toDateString();
@@ -38,6 +39,11 @@ export function WordWeb() {
   async function share() {
     const text = `${rel.verse}\n${rel.ref}\n\n— Lumina`;
     try {
+      // App nativo: folha de compartilhamento do sistema.
+      if (Platform.OS !== 'web') {
+        await Share.share({ message: text });
+        return;
+      }
       if (typeof navigator !== 'undefined' && navigator.share) {
         await navigator.share({ text });
         return;
@@ -64,11 +70,11 @@ export function WordWeb() {
       />
 
       <View style={[styles.row, !wide && styles.column]}>
-        <Card padded={false} style={[styles.wordCard, wide && { flex: 1.5 }]}>
+        <Card padded={false} style={[styles.wordCard, wide && { flex: 1.5 }, narrow && { minHeight: 520 }]}>
           <Dunes height="34%" />
-          <View style={styles.wordBody}>
+          <View style={[styles.wordBody, narrow && { padding: 24 }]}>
             <Eyebrow>Palavra do dia</Eyebrow>
-            <Text style={styles.verse}>{rel.verse}</Text>
+            <Text style={[styles.verse, narrow && { fontSize: 27, lineHeight: 35 }]}>{rel.verse}</Text>
             <Text style={styles.ref}>{rel.ref}</Text>
             <View style={styles.goldRule} />
             <Text style={styles.reflectionTitle}>Reflexão</Text>
