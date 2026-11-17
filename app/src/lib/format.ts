@@ -90,3 +90,8 @@ export function dayAndTime(iso: string, now = new Date()) {
   const day = diff === 0 ? 'hoje' : diff === 1 ? 'ontem' : `em ${d.getDate()} ${MONTHS[d.getMonth()].slice(0, 3)}`;
   return `${day}, às ${hhmm}`;
 }
+
+/** Data local "YYYY-MM-DD" (o banco usaria a data em UTC, que à noite no Brasil já é o dia seguinte). */
+export function localISODate(d = new Date()) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}

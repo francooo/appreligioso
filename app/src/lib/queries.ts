@@ -13,6 +13,7 @@ import {
   User,
   request,
 } from './api';
+import { localISODate } from './format';
 
 // Hooks de dados do usuário (React Query). Cada um usa o token da sessão atual.
 
@@ -100,7 +101,16 @@ export function useCreateJournalEntry() {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: (v: { items: string[]; mood?: string | null }) =>
-      api<{ entry: JournalEntry }>('/api/journal', json('POST', v)),
+      api<{ entry: JournalEntry }>('/api/journal', json('POST', { ...v, date: localISODate() })),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['journal'] }),
+  });
+}
+
+export function useDeleteJournalEntry() {
+  const api = useApi();
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (id: string) => api(`/api/journal/${id}`, { method: 'DELETE' }),
     onSuccess: () => qc.invalidateQueries({ queryKey: ['journal'] }),
   });
 }
