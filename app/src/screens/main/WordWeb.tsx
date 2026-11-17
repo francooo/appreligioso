@@ -1,12 +1,14 @@
 import { ComponentRef, useRef, useState } from 'react';
-import { Platform, Pressable, Share, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
+import { Pressable, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { AiResponseCard } from '../../components/AiResponseCard';
 import { Button } from '../../components/Button';
 import { Dunes } from '../../components/Dunes';
 import { useToast } from '../../components/Toast';
 import { Card, Eyebrow, HighlightCard, PageHeader } from '../../components/ui';
 import { longDateCapitalized } from '../../lib/format';
-import { useCreateJournalEntry, useSaved, useToggleSaved, useTradition, useTraditionKey } from '../../lib/queries';
+import { useAiPalavra, useCreateJournalEntry, useSaved, useToggleSaved, useTradition, useTraditionKey } from '../../lib/queries';
+import { shareText } from '../../lib/share';
 import { colors, fonts, radii, type } from '../../theme';
 
 // Texto de reflexão e pergunta do mockup: servem para qualquer passagem.
@@ -36,22 +38,15 @@ export function WordWeb() {
   const noteRef = useRef<ComponentRef<typeof TextInput>>(null);
   const createEntry = useCreateJournalEntry();
 
+  const aiReflection = useAiPalavra();
+  const generateReflection = () => aiReflection.mutate({ reference: rel.ref, passage: rel.verse });
+
   async function share() {
-    const text = `${rel.verse}\n${rel.ref}\n\n— Lumina`;
     try {
-      // App nativo: folha de compartilhamento do sistema.
-      if (Platform.OS !== 'web') {
-        await Share.share({ message: text });
-        return;
-      }
-      if (typeof navigator !== 'undefined' && navigator.share) {
-        await navigator.share({ text });
-        return;
-      }
-      await navigator.clipboard.writeText(text);
-      toast('Passagem copiada para compartilhar.');
-    } catch (err) {
-      if ((err as Error).name !== 'AbortError') toast('Não foi possível compartilhar agora.');
+      const r = await shareText(`${rel.verse}\n${rel.ref}\n\n— Lumina`);
+      if (r === 'copied') toast('Passagem copiada para compartilhar.');
+    } catch {
+      toast('Não foi possível compartilhar agora.');
     }
   }
 
@@ -79,6 +74,26 @@ export function WordWeb() {
             <View style={styles.goldRule} />
             <Text style={styles.reflectionTitle}>Reflexão</Text>
             <Text style={styles.reflection}>{REFLECTION}</Text>
+            {aiReflection.isIdle ? (
+              <Button
+                title="Gerar reflexão com IA"
+                variant="outline"
+                size="sm"
+                style={{ alignSelf: 'flex-start', marginTop: 6 }}
+                icon={<Ionicons name="sparkles" size={14} color={colors.navy} />}
+                onPress={generateReflection}
+              />
+            ) : (
+              <AiResponseCard
+                label="Reflexão com IA"
+                loading={aiReflection.isPending}
+                error={aiReflection.error}
+                data={aiReflection.data}
+                onRegenerate={generateReflection}
+                saveAs={{ type: 'reflexao', subtitle: `Reflexão com IA · ${rel.ref}` }}
+                style={{ marginTop: 6 }}
+              />
+            )}
           </View>
         </Card>
 

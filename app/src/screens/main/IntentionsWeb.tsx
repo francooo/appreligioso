@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { AiResponseCard } from '../../components/AiResponseCard';
 import { Button } from '../../components/Button';
 import { useToast } from '../../components/Toast';
 import { Card, Chip, PageHeader } from '../../components/ui';
 import { INTENTION_TAGS } from '../../content/traditions';
 import { Intention } from '../../lib/api';
 import { relativeAge } from '../../lib/format';
-import { useIntentionMutations, useIntentions, useTradition } from '../../lib/queries';
+import { useAiOracao, useIntentionMutations, useIntentions, useTradition } from '../../lib/queries';
 import { useLayout } from '../../lib/responsive';
 import { colors, fonts, radii, type } from '../../theme';
 
@@ -93,6 +95,8 @@ function IntentionRow({ intention: i }: { intention: Intention }) {
   const toast = useToast();
   const { update, remove } = useIntentionMutations();
   const [praying, setPraying] = useState(false);
+  const aiPrayer = useAiOracao();
+  const writePrayer = () => aiPrayer.mutate({ intention: i.text, tag: i.tag });
   const answered = i.status === 'answered';
   const { isNarrow } = useLayout();
 
@@ -129,6 +133,14 @@ function IntentionRow({ intention: i }: { intention: Intention }) {
           <View style={[styles.actions, isNarrow && styles.actionsNarrow]}>
             <Button title={praying ? 'Concluir' : 'Orar agora'} size="sm" onPress={() => setPraying((p) => !p)} />
             <Button
+              title="Oração com IA"
+              size="sm"
+              variant="tertiary"
+              icon={<Ionicons name="sparkles" size={13} color={colors.navy} />}
+              disabled={aiPrayer.isPending}
+              onPress={writePrayer}
+            />
+            <Button
               title="Marcar como atendida"
               size="sm"
               variant="tertiary"
@@ -149,6 +161,17 @@ function IntentionRow({ intention: i }: { intention: Intention }) {
             que foi atendida, é só marcar.
           </Text>
         </View>
+      )}
+      {!aiPrayer.isIdle && (
+        <AiResponseCard
+          label="Oração escrita com IA"
+          loading={aiPrayer.isPending}
+          error={aiPrayer.error}
+          data={aiPrayer.data}
+          onRegenerate={writePrayer}
+          saveAs={{ type: 'oracao', subtitle: `Oração com IA · ${i.text.slice(0, 120)}` }}
+          style={styles.aiCard}
+        />
       )}
     </Card>
   );
@@ -196,6 +219,7 @@ const styles = StyleSheet.create({
   itemAnswered: { color: colors.text },
   meta: { ...type.meta, fontSize: 13, color: colors.text, marginTop: 3 },
   actions: { flexDirection: 'row', gap: 10 },
+  aiCard: { marginTop: 14, marginLeft: 23 },
   prayer: { marginTop: 14, marginLeft: 23, padding: 16, borderRadius: 12, backgroundColor: colors.sand },
   prayerText: { fontFamily: fonts.serifMedium, fontSize: 16, lineHeight: 24, color: colors.title },
 });

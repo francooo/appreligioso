@@ -3,6 +3,10 @@ import { useAuth } from '../context/AuthContext';
 import { TEXTS_PREFIX, isPlanProgress } from '../content/plans';
 import { DEFAULT_TRADITION, TRADITIONS, TraditionKey, getTradition } from '../content/traditions';
 import {
+  AiConversation,
+  AiKind,
+  AiMessage,
+  AiReply,
   Intention,
   JournalEntry,
   Preferences,
@@ -235,5 +239,68 @@ export function useUpdatePreferences() {
     },
     onError: (_e, _p, ctx) => ctx?.prev && qc.setQueryData(['preferences'], ctx.prev),
     onSettled: () => qc.invalidateQueries({ queryKey: ['preferences'] }),
+  });
+}
+
+// ---------- IA (Groq, via backend) ----------
+export function useAiConversations(kind: AiKind = 'chat') {
+  const api = useApi();
+  return useQuery({
+    queryKey: ['ai', 'conversations', kind],
+    queryFn: () => api<{ conversations: AiConversation[] }>(`/api/ai/conversations?kind=${kind}`),
+    select: (d) => d.conversations,
+  });
+}
+
+export function useAiConversation(id: string | null) {
+  const api = useApi();
+  return useQuery({
+    queryKey: ['ai', 'conversation', id],
+    queryFn: () => api<{ conversation: AiConversation; messages: AiMessage[] }>(`/api/ai/conversation?id=${id}`),
+    enabled: !!id,
+  });
+}
+
+/** Envia uma mensagem ao Guia. Sem conversationId, começa uma conversa nova. */
+export function useAiChat() {
+  const api = useApi();
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (v: { conversationId: string | null; message: string }) => api<AiReply>('/api/ai/chat', json('POST', v)),
+    onSuccess: ({ conversation }) => {
+      qc.invalidateQueries({ queryKey: ['ai', 'conversation', conversation.id] });
+      qc.invalidateQueries({ queryKey: ['ai', 'conversations'] });
+    },
+  });
+}
+
+export function useDeleteAiConversation() {
+  const api = useApi();
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (id: string) => api(`/api/ai/conversation?id=${id}`, { method: 'DELETE' }),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['ai', 'conversations'] }),
+  });
+}
+
+/** Recursos de resposta única: reflexão da Palavra, oração a partir de intenção, reflexão do diário. */
+export function useAiPalavra() {
+  const api = useApi();
+  return useMutation({
+    mutationFn: (v: { reference: string; passage: string }) => api<AiReply>('/api/ai/palavra', json('POST', v)),
+  });
+}
+
+export function useAiOracao() {
+  const api = useApi();
+  return useMutation({
+    mutationFn: (v: { intention: string; tag?: string | null }) => api<AiReply>('/api/ai/oracao', json('POST', v)),
+  });
+}
+
+export function useAiDiario() {
+  const api = useApi();
+  return useMutation({
+    mutationFn: (v: { items: string[]; mood?: string | null }) => api<AiReply>('/api/ai/diario', json('POST', v)),
   });
 }

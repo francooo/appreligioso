@@ -8,19 +8,19 @@ export const TRADITIONS = ["catolica", "evangelica", "espirita", "judaica", "isl
 const SAVED_TYPES = ["passagem", "oracao", "reflexao", "plano"];
 const MOODS = ["Em paz", "Grata", "Cansada", "Esperançosa"];
 
-type Ctx = { user: User; request: Request; id?: string };
-type Handler = (ctx: Ctx) => Promise<unknown>;
-type Methods = Partial<Record<"GET" | "POST" | "PATCH" | "PUT" | "DELETE", Handler>>;
+export type Ctx = { user: User; request: Request; id?: string };
+export type Handler = (ctx: Ctx) => Promise<unknown>;
+export type Methods = Partial<Record<"GET" | "POST" | "PATCH" | "PUT" | "DELETE", Handler>>;
 
 // ---------- validação ----------
 
-async function body(request: Request): Promise<Record<string, unknown>> {
+export async function body(request: Request): Promise<Record<string, unknown>> {
   const data = await request.json().catch(() => null);
   if (!data || typeof data !== "object" || Array.isArray(data)) throw new InputError("Corpo JSON inválido.");
   return data as Record<string, unknown>;
 }
 
-function text(v: unknown, field: string, { max = 500, optional = false } = {}): string | null {
+export function text(v: unknown, field: string, { max = 500, optional = false } = {}): string | null {
   if (v === undefined || v === null || v === "") {
     if (optional) return null;
     throw new InputError(`${field} é obrigatório.`);
@@ -32,7 +32,7 @@ function text(v: unknown, field: string, { max = 500, optional = false } = {}): 
   return t || null;
 }
 
-function oneOf(v: unknown, field: string, options: string[], optional = false): string | null {
+export function oneOf(v: unknown, field: string, options: string[], optional = false): string | null {
   if ((v === undefined || v === null) && optional) return null;
   if (typeof v !== "string" || !options.includes(v)) throw new InputError(`${field} inválido.`);
   return v;
@@ -55,16 +55,16 @@ function int(v: unknown, field: string, min = 0): number {
   return v;
 }
 
-function uuid(id: string | undefined) {
+export function uuid(id: string | undefined) {
   if (!id || !/^[0-9a-f-]{36}$/i.test(id)) throw new InputError("id inválido.");
   return id;
 }
 
-function param(request: Request, name: string) {
+export function param(request: Request, name: string) {
   return new URL(request.url).searchParams.get(name);
 }
 
-function notFound(): never {
+export function notFound(): never {
   throw new InputError("Item não encontrado.", 404);
 }
 

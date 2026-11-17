@@ -82,6 +82,21 @@ export function HomeWeb() {
         <GratitudeCard />
         <IntentionsCard />
       </View>
+
+      <Link href={'/orar/guia' as never} asChild>
+        <Pressable accessibilityRole="link">
+          <Card style={styles.guide}>
+            <View style={styles.guideIcon}>
+              <Ionicons name="sparkles" size={18} color={colors.gold} />
+            </View>
+            <View style={{ flex: 1, gap: 4 }}>
+              <Text style={styles.guideTitle}>Converse com o Guia espiritual</Text>
+              <Text style={styles.guideSub}>Uma conversa acolhedora, com IA, dentro da sua tradição.</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={18} color={colors.navy} />
+          </Card>
+        </Pressable>
+      </Link>
     </View>
   );
 }
@@ -281,6 +296,10 @@ const styles = StyleSheet.create({
   ref: { ...type.meta, fontSize: 14, color: colors.text },
   wordActions: { flexDirection: 'row', gap: 10, padding: 36, paddingTop: 24 },
 
+  guide: { flexDirection: 'row', alignItems: 'center', gap: 16, paddingVertical: 20 },
+  guideIcon: { width: 44, height: 44, borderRadius: 22, backgroundColor: colors.peach, alignItems: 'center', justifyContent: 'center' },
+  guideTitle: { fontFamily: fonts.serif, fontSize: 19, color: colors.title },
+  guideSub: { fontFamily: fonts.regular, fontSize: 14, color: colors.text },
   moment: { minHeight: 316, padding: 30, justifyContent: 'space-between' },
   momentTitle: { fontFamily: fonts.serif, fontSize: 26, lineHeight: 32, color: colors.white },
   momentSub: { fontFamily: fonts.regular, fontSize: 15, lineHeight: 22, color: colors.navyTextLight },

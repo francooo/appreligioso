@@ -51,6 +51,11 @@ export type SavedItem = {
 
 export type Progress = { plan_key: string; plan_title: string; step: number; total: number; updated_at: string };
 
+export type AiKind = 'chat' | 'palavra' | 'oracao' | 'diario';
+export type AiConversation = { id: string; kind: AiKind; title: string; created_at: string; updated_at: string };
+export type AiMessage = { id: string; role: 'user' | 'assistant'; content: string; created_at: string };
+export type AiReply = { conversation: AiConversation; reply: string };
+
 export class ApiError extends Error {
   constructor(message: string, public status: number) {
     super(message);

@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
 import { Link } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
+import { AiResponseCard } from '../../components/AiResponseCard';
 import { Button } from '../../components/Button';
 import { useToast } from '../../components/Toast';
 import { Card, Chip, Divider, Eyebrow, PageHeader } from '../../components/ui';
 import { MOODS } from '../../content/traditions';
 import { longDateCapitalized, weekdayShortDate } from '../../lib/format';
-import { useCreateJournalEntry, useJournal } from '../../lib/queries';
+import { useAiDiario, useCreateJournalEntry, useJournal } from '../../lib/queries';
 import { colors, fonts, type } from '../../theme';
 
 const PLACEHOLDERS = ['Um momento bom de hoje…', 'Algo pequeno que fez diferença…', 'Alguém que você quer lembrar…'];
@@ -21,6 +23,10 @@ export function GratitudeWeb() {
 
   const [items, setItems] = useState(['', '', '']);
   const [mood, setMood] = useState<string | null>(null);
+  // Último registro salvo: base para a reflexão com IA.
+  const [lastSaved, setLastSaved] = useState<{ items: string[]; mood: string | null } | null>(null);
+  const aiReflection = useAiDiario();
+  const reflect = () => lastSaved && aiReflection.mutate(lastSaved);
 
   function save() {
     if (!items.some((i) => i.trim())) return toast('Escreva pelo menos um motivo de gratidão.');
@@ -28,6 +34,8 @@ export function GratitudeWeb() {
       { items, mood },
       {
         onSuccess: () => {
+          setLastSaved({ items: items.filter((i) => i.trim()), mood });
+          aiReflection.reset();
           setItems(['', '', '']);
           setMood(null);
           toast('Registro salvo no seu diário.');
@@ -75,6 +83,28 @@ export function GratitudeWeb() {
             <Text style={styles.private}>Privado · só você vê seus registros</Text>
             <Button title="Salvar registro" loading={create.isPending} onPress={save} />
           </View>
+
+          {lastSaved &&
+            (aiReflection.isIdle ? (
+              <Button
+                title="Receber uma reflexão sobre o registro"
+                variant="outline"
+                size="sm"
+                style={{ alignSelf: 'flex-start', marginTop: 20 }}
+                icon={<Ionicons name="sparkles" size={14} color={colors.navy} />}
+                onPress={reflect}
+              />
+            ) : (
+              <AiResponseCard
+                label="Reflexão com IA"
+                loading={aiReflection.isPending}
+                error={aiReflection.error}
+                data={aiReflection.data}
+                onRegenerate={reflect}
+                saveAs={{ type: 'reflexao', subtitle: 'Reflexão com IA · Diário de gratidão' }}
+                style={{ marginTop: 20 }}
+              />
+            ))}
         </Card>
 
         <Card style={[styles.recent, !wide && { width: '100%' }]}>

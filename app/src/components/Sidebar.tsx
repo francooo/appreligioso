@@ -27,6 +27,7 @@ export const SECTIONS: Section[] = [
       { href: '/orar/oracoes', label: 'Orações' },
       { href: '/orar/intencoes', label: 'Intenções' },
       { href: '/orar/lembretes', label: 'Lembretes' },
+      { href: '/orar/guia', label: 'Guia' },
     ],
   },
   {
