@@ -86,6 +86,20 @@ export function loginWithGoogle(idToken: string) {
   });
 }
 
+export function loginWithPassword(email: string, password: string) {
+  return request<{ token: string; user: User }>('/api/auth/login', {
+    method: 'POST',
+    body: JSON.stringify({ email, password }),
+  });
+}
+
+export function registerWithPassword(name: string, email: string, password: string) {
+  return request<{ token: string; user: User }>('/api/auth/register', {
+    method: 'POST',
+    body: JSON.stringify({ name, email, password }),
+  });
+}
+
 export function fetchMe(token: string) {
   return request<{ user: User }>('/api/auth/me', { token });
 }

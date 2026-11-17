@@ -3,6 +3,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Button } from '../components/Button';
 import { Checkbox } from '../components/Checkbox';
 import { Dunes } from '../components/Dunes';
+import { FormMessage } from '../components/FormMessage';
 import { GoogleSignInButton } from '../components/GoogleSignInButton';
 import { OrDivider } from '../components/OrDivider';
 import { SunLogo } from '../components/SunLogo';
@@ -13,6 +14,10 @@ import { colors, fonts, shadow } from '../theme';
 export function LoginDesktopLayout() {
   const { height } = useWindowDimensions();
   const {
+    mode,
+    toggleMode,
+    name,
+    setName,
     email,
     setEmail,
     password,
@@ -21,8 +26,13 @@ export function LoginDesktopLayout() {
     toggleShowPassword,
     remember,
     setRemember,
+    loading,
+    error,
+    notice,
+    forgotPassword,
     handleLogin,
   } = useLoginForm();
+  const signup = mode === 'signup';
 
   return (
     <View style={styles.page}>
@@ -45,11 +55,23 @@ export function LoginDesktopLayout() {
         </View>
 
         <View style={styles.card}>
-          <Text style={styles.eyebrow}>BEM VINDA(O) DE VOLTA</Text>
-          <Text style={styles.cardTitle}>Que bom ter você{'\n'}por aqui.</Text>
-          <Text style={styles.cardSubtitle}>Entre para continuar sua jornada de fé.</Text>
+          <Text style={styles.eyebrow}>{signup ? 'CRIAR CONTA' : 'BEM VINDA(O) DE VOLTA'}</Text>
+          <Text style={styles.cardTitle}>{signup ? 'Comece sua\njornada.' : 'Que bom ter você\npor aqui.'}</Text>
+          <Text style={styles.cardSubtitle}>
+            {signup ? 'Leva menos de um minuto e é gratuito.' : 'Entre para continuar sua jornada de fé.'}
+          </Text>
 
           <View style={styles.form}>
+            {signup ? (
+              <TextField
+                label="Nome"
+                placeholder="Como quer ser chamada(o)"
+                value={name}
+                onChangeText={setName}
+                autoComplete="name"
+                autoCapitalize="words"
+              />
+            ) : null}
             <TextField
               label="E-mail"
               placeholder="seu@email.com"
@@ -65,7 +87,8 @@ export function LoginDesktopLayout() {
               value={password}
               onChangeText={setPassword}
               secureTextEntry={!showPassword}
-              autoComplete="password"
+              autoComplete={signup ? 'new-password' : 'current-password'}
+              hint={signup ? 'Mínimo de 8 caracteres.' : undefined}
               onSubmitEditing={handleLogin}
               right={
                 <Pressable
@@ -84,17 +107,25 @@ export function LoginDesktopLayout() {
 
             <View style={styles.optionsRow}>
               <Checkbox label="Manter conectado" checked={remember} onChange={setRemember} />
-              <Pressable hitSlop={8}>
-                <Text style={styles.link}>Esqueci a senha</Text>
-              </Pressable>
+              {!signup ? (
+                <Pressable hitSlop={8} onPress={forgotPassword} accessibilityRole="button">
+                  <Text style={styles.link}>Esqueci a senha</Text>
+                </Pressable>
+              ) : null}
             </View>
+
+            <FormMessage error={error} notice={notice} />
           </View>
 
           <View style={styles.actions}>
-            <Button title="Entrar" onPress={handleLogin} />
+            <Button title={signup ? 'Criar conta' : 'Entrar'} loading={loading} onPress={handleLogin} />
             <OrDivider />
             <GoogleSignInButton remember={remember} />
-            <Button title="Criar uma conta gratuita" variant="outline" />
+            <Button
+              title={signup ? 'Já tenho conta · Entrar' : 'Criar uma conta gratuita'}
+              variant="outline"
+              onPress={toggleMode}
+            />
           </View>
 
           <Text style={styles.legal}>

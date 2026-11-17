@@ -1,5 +1,6 @@
 import { SignJWT, createRemoteJWKSet, jwtVerify } from "jose";
 import { sql } from "./db.js";
+import { hashPassword, verifyPassword } from "./password.js";
 
 const GOOGLE_JWKS = createRemoteJWKSet(new URL("https://www.googleapis.com/oauth2/v3/certs"));
 const GOOGLE_ISSUERS = ["https://accounts.google.com", "accounts.google.com"];
@@ -52,17 +53,70 @@ export async function verifyGoogleIdToken(idToken: string) {
 
 export async function upsertGoogleUser(g: Awaited<ReturnType<typeof verifyGoogleIdToken>>) {
   const [user] = (await sql`
-    INSERT INTO users (google_id, email, name, avatar_url, last_login_at)
-    VALUES (${g.googleId}, ${g.email}, ${g.name}, ${g.picture}, now())
+    INSERT INTO users (google_id, email, name, avatar_url, email_verified, last_login_at)
+    VALUES (${g.googleId}, ${g.email}, ${g.name}, ${g.picture}, true, now())
     ON CONFLICT (email) DO UPDATE SET
-      google_id     = EXCLUDED.google_id,
-      name          = COALESCE(EXCLUDED.name, users.name),
-      avatar_url    = COALESCE(EXCLUDED.avatar_url, users.avatar_url),
-      last_login_at = now(),
-      updated_at    = now()
+      google_id      = EXCLUDED.google_id,
+      name           = COALESCE(users.name, EXCLUDED.name),
+      avatar_url     = COALESCE(EXCLUDED.avatar_url, users.avatar_url),
+      -- O Google provou que o e-mail é desta pessoa. Uma senha criada antes por quem
+      -- não provou ser dono do e-mail é descartada (evita sequestro de conta).
+      password_hash  = CASE WHEN users.email_verified THEN users.password_hash ELSE NULL END,
+      email_verified = true,
+      last_login_at  = now(),
+      updated_at     = now()
     RETURNING id, email, name, avatar_url, tradition
   `) as User[];
   return user;
+}
+
+// ---------- e-mail e senha ----------
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+function credentials(body: Record<string, unknown>) {
+  const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
+  const password = typeof body.password === "string" ? body.password : "";
+  if (!EMAIL_RE.test(email) || email.length > 254) throw new InputError("Informe um e-mail válido.");
+  if (!password) throw new InputError("Informe a senha.");
+  if (password.length > 128) throw new InputError("A senha passa de 128 caracteres.");
+  return { email, password };
+}
+
+export async function registerWithPassword(body: Record<string, unknown>) {
+  const { email, password } = credentials(body);
+  const name = typeof body.name === "string" ? body.name.trim() : "";
+  if (!name) throw new InputError("Informe seu nome.");
+  if (name.length > 80) throw new InputError("O nome passa de 80 caracteres.");
+  if (password.length < 8) throw new InputError("A senha precisa ter pelo menos 8 caracteres.");
+
+  const hash = await hashPassword(password);
+  const [user] = (await sql`
+    INSERT INTO users (email, name, password_hash, last_login_at)
+    VALUES (${email}, ${name}, ${hash}, now())
+    ON CONFLICT (email) DO NOTHING
+    RETURNING id, email, name, avatar_url, tradition
+  `) as User[];
+  if (!user) throw new InputError("Este e-mail já tem uma conta. Entre com a senha ou com o Google.", 409);
+  return user;
+}
+
+export async function loginWithPassword(body: Record<string, unknown>) {
+  const { email, password } = credentials(body);
+  const [row] = (await sql`
+    SELECT id, email, name, avatar_url, tradition, password_hash, google_id FROM users WHERE email = ${email}
+  `) as (User & { password_hash: string | null; google_id: string | null })[];
+
+  if (!(await verifyPassword(password, row?.password_hash ?? null))) {
+    if (row && !row.password_hash && row.google_id) {
+      throw new InputError("Esta conta foi criada com o Google. Use “Continuar com o Google”.", 401);
+    }
+    throw new InputError("E-mail ou senha incorretos.", 401);
+  }
+
+  await sql`UPDATE users SET last_login_at = now() WHERE id = ${row.id}`;
+  const { password_hash: _h, google_id: _g, ...user } = row;
+  return user as User;
 }
 
 function sessionKey() {

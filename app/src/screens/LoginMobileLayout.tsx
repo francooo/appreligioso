@@ -1,4 +1,5 @@
 import {
+  ActivityIndicator,
   KeyboardAvoidingView,
   Platform,
   Pressable,
@@ -10,6 +11,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { Dunes } from '../components/Dunes';
+import { FormMessage } from '../components/FormMessage';
 import { GoogleSignInButton } from '../components/GoogleSignInButton';
 import { OrDivider } from '../components/OrDivider';
 import { SunLogo } from '../components/SunLogo';
@@ -18,8 +20,25 @@ import { useLoginForm } from '../hooks/useLoginForm';
 import { colors, fonts, radius } from '../theme';
 
 export function LoginMobileLayout() {
-  const { email, setEmail, password, setPassword, showPassword, toggleShowPassword, handleLogin } =
-    useLoginForm();
+  // No celular a sessão fica salva (não há a opção "Manter conectado").
+  const {
+    mode,
+    toggleMode,
+    name,
+    setName,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    showPassword,
+    toggleShowPassword,
+    loading,
+    error,
+    notice,
+    forgotPassword,
+    handleLogin,
+  } = useLoginForm({ defaultRemember: true });
+  const signup = mode === 'signup';
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -39,6 +58,16 @@ export function LoginMobileLayout() {
           <Text style={styles.subtitle}>Palavras que acolhem e{'\n'}acompanham seu caminho.</Text>
 
           <View style={styles.form}>
+            {signup ? (
+              <TextField
+                label="Nome"
+                placeholder="Como quer ser chamada(o)"
+                value={name}
+                onChangeText={setName}
+                autoComplete="name"
+                autoCapitalize="words"
+              />
+            ) : null}
             <TextField
               label="E-mail"
               placeholder="seu@email.com"
@@ -54,7 +83,10 @@ export function LoginMobileLayout() {
               value={password}
               onChangeText={setPassword}
               secureTextEntry={!showPassword}
-              autoComplete="password"
+              autoComplete={signup ? 'new-password' : 'current-password'}
+              hint={signup ? 'Mínimo de 8 caracteres.' : undefined}
+              returnKeyType="go"
+              onSubmitEditing={handleLogin}
               right={
                 <Pressable
                   onPress={toggleShowPassword}
@@ -69,16 +101,26 @@ export function LoginMobileLayout() {
                 </Pressable>
               }
             />
-            <Pressable style={styles.forgot} hitSlop={8}>
-              <Text style={styles.link}>Esqueci a senha</Text>
-            </Pressable>
+            {!signup ? (
+              <Pressable style={styles.forgot} hitSlop={8} onPress={forgotPassword} accessibilityRole="button">
+                <Text style={styles.link}>Esqueci a senha</Text>
+              </Pressable>
+            ) : null}
+            <FormMessage error={error} notice={notice} />
           </View>
 
           <Pressable
             onPress={handleLogin}
+            disabled={loading}
+            accessibilityRole="button"
+            accessibilityState={{ busy: loading }}
             style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}
           >
-            <Text style={styles.buttonText}>Entrar</Text>
+            {loading ? (
+              <ActivityIndicator color={colors.white} />
+            ) : (
+              <Text style={styles.buttonText}>{signup ? 'Criar conta' : 'Entrar'}</Text>
+            )}
           </Pressable>
 
           <View style={styles.google}>
@@ -86,9 +128,12 @@ export function LoginMobileLayout() {
             <GoogleSignInButton />
           </View>
 
-          <Text style={styles.signup}>
-            Ainda não tem conta? <Text style={styles.linkBold}>Criar conta</Text>
-          </Text>
+          <Pressable onPress={toggleMode} hitSlop={8} accessibilityRole="button">
+            <Text style={styles.signup}>
+              {signup ? 'Já tem conta? ' : 'Ainda não tem conta? '}
+              <Text style={styles.linkBold}>{signup ? 'Entrar' : 'Criar conta'}</Text>
+            </Text>
+          </Pressable>
 
           <View style={styles.spacer} />
 
